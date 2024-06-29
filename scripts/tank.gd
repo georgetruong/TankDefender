@@ -1,22 +1,31 @@
 extends CharacterBody2D
+class_name Tank
 
 @export var move_speed = 200
 
 var target_position = null
 
 @onready var target_line = $TargetLine
+@onready var turret = $TankTurretSprite
+
+var shell_scene = preload("res://scenes/tank_shell.tscn")
+@onready var shell_container = $ShellContainer
 
 func _ready():
 	setup_target_line()
 
 func _process(delta):
-	if !target_position:
-		var mouse_position = get_global_mouse_position()
-		look_at(mouse_position)
+	var mouse_position = get_global_mouse_position()
+	#if !target_position:
+	#	look_at(mouse_position)
+
+	turret.look_at(mouse_position)	
 
 func _unhandled_input(event):
 	if event is InputEventMouseButton and event.button_index == MOUSE_BUTTON_RIGHT and event.pressed:
 		target_position = get_global_mouse_position()
+	elif event is InputEventMouseButton and event.button_index == MOUSE_BUTTON_LEFT and event.pressed:
+		shoot()
 
 func _physics_process(delta):
 	if target_position:
@@ -62,3 +71,19 @@ func update_line():
 	else:
 		target_line.points[0] = Vector2.ZERO
 		target_line.points[1] = Vector2.ZERO
+
+
+############################################################################################################################
+# Attack
+#
+############################################################################################################################
+func shoot():
+	var mouse_pos = get_global_mouse_position()
+	var shell_inst = shell_scene.instantiate()
+	var direction = (mouse_pos - global_position).normalized()
+
+	shell_inst.global_position = global_position
+	shell_inst.linear_velocity = direction * 500
+	shell_inst.rotation = direction.angle()
+
+	get_tree().root.add_child(shell_inst)
