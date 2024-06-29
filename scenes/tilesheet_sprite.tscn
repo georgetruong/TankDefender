@@ -1,0 +1,10 @@
+[gd_scene load_steps=3 format=3 uid="uid://h57e5o142ttl"]
+
+[ext_resource type="Texture2D" uid="uid://6s6i4laudgdr" path="res://assets/tilesheets/towerDefense_tilesheet@2.png" id="1_d2hx0"]
+[ext_resource type="Script" path="res://scripts/tilesheet_sprite.gd" id="2_tth6d"]
+
+[node name="TilesheetSprite" type="Sprite2D"]
+texture = ExtResource("1_d2hx0")
+region_enabled = true
+region_rect = Rect2(2816, 0, 128, 128)
+script = ExtResource("2_tth6d")
