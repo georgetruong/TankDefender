@@ -1,7 +1,6 @@
-extends CharacterBody2D
-class_name Tank
+extends Unit
 
-@export var move_speed = 200
+class_name Tank
 
 var target_position = null
 
@@ -12,9 +11,11 @@ var shell_scene = preload("res://scenes/tank_shell.tscn")
 @onready var shell_container = $ShellContainer
 
 func _ready():
+	super._ready()
 	setup_target_line()
 
 func _process(delta):
+	super._process(delta)
 	var mouse_position = get_global_mouse_position()
 	#if !target_position:
 	#	look_at(mouse_position)

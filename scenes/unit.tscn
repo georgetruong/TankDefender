@@ -1,0 +1,25 @@
+[gd_scene load_steps=5 format=3 uid="uid://bjk0ex4yc0npm"]
+
+[ext_resource type="Script" path="res://scripts/unit.gd" id="1_kvfto"]
+[ext_resource type="PackedScene" uid="uid://bqlp08elp3jey" path="res://scenes/health_bar.tscn" id="2_md11i"]
+[ext_resource type="PackedScene" uid="uid://h57e5o142ttl" path="res://scenes/tilesheet_sprite.tscn" id="3_vb6eg"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_tr6mt"]
+radius = 64.0
+
+[node name="Unit" type="CharacterBody2D"]
+position = Vector2(217, 122)
+script = ExtResource("1_kvfto")
+
+[node name="HealthBar" parent="." instance=ExtResource("2_md11i")]
+metadata/_edit_use_anchors_ = true
+
+[node name="TargetLine" type="Line2D" parent="."]
+
+[node name="TankBodySprite" parent="." instance=ExtResource("3_vb6eg")]
+region_rect = Rect2(1921, 1408, 128, 128)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_tr6mt")
+
+[node name="ProjectilesContainer" type="Node2D" parent="."]
