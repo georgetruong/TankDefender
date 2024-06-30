@@ -33,8 +33,8 @@ func _physics_process(delta):
 		var direction = (target_position - global_position).normalized()
 		if global_position.distance_to(target_position) > 5:
 			# TODO: BUG - Speed is nil
-			#velocity = direction * speed
-			velocity = direction * 200
+			velocity = direction * move_speed
+			#velocity = direction * 200
 			look_at(target_position)
 			move_and_slide()
 		else:
@@ -50,10 +50,10 @@ func _physics_process(delta):
 func setup_target_line():
 
 	#target_line.default_color = Color.GREEN
-	target_line.width = 2
+	target_line.width = 5
 	target_line.points = [Vector2.ZERO, Vector2.ZERO]
 
-	var dash_texture = create_dash_texture(3, Color.GREEN)
+	var dash_texture = create_dash_texture(10, Color.GREEN)
 	target_line.texture = dash_texture
 	target_line.texture_mode = Line2D.LINE_TEXTURE_TILE
 	target_line.texture_repeat = CanvasItem.TEXTURE_REPEAT_ENABLED

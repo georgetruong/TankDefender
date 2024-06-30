@@ -10,10 +10,11 @@ radius = 62.0967
 
 [node name="Tank" type="CharacterBody2D"]
 position = Vector2(285, 186)
+scale = Vector2(0.33, 0.33)
 collision_layer = 2
 collision_mask = 25
 script = ExtResource("1_rp7qp")
-move_speed = 300
+move_speed = 100
 
 [node name="HealthBar" parent="." instance=ExtResource("2_clx2n")]
 
