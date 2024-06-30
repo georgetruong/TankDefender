@@ -1,8 +1,9 @@
-[gd_scene load_steps=5 format=3 uid="uid://elah1xi3jlm2"]
+[gd_scene load_steps=6 format=3 uid="uid://elah1xi3jlm2"]
 
 [ext_resource type="Script" path="res://scripts/tank.gd" id="1_rp7qp"]
 [ext_resource type="PackedScene" uid="uid://bqlp08elp3jey" path="res://scenes/health_bar.tscn" id="2_clx2n"]
 [ext_resource type="PackedScene" uid="uid://h57e5o142ttl" path="res://scenes/tilesheet_sprite.tscn" id="2_sc6np"]
+[ext_resource type="Texture2D" uid="uid://cnaj4k68qsn4y" path="res://assets/tilesheets/topDownTanks_objects_tilesheet@2.png" id="4_6ndpc"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_ekmd1"]
 radius = 62.0967
@@ -10,7 +11,9 @@ radius = 62.0967
 [node name="Tank" type="CharacterBody2D"]
 position = Vector2(285, 186)
 collision_layer = 2
+collision_mask = 25
 script = ExtResource("1_rp7qp")
+move_speed = 300
 
 [node name="HealthBar" parent="." instance=ExtResource("2_clx2n")]
 
@@ -21,6 +24,11 @@ region_rect = Rect2(1921, 1408, 128, 128)
 
 [node name="TankTurretSprite" parent="." instance=ExtResource("2_sc6np")]
 region_rect = Rect2(1920, 1536, 128, 128)
+
+[node name="DeathSprite" parent="." instance=ExtResource("2_sc6np")]
+visible = false
+texture = ExtResource("4_6ndpc")
+region_rect = Rect2(130, 0, 112, 112)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CircleShape2D_ekmd1")

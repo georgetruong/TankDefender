@@ -11,8 +11,14 @@ class_name Unit
 
 @onready var health_bar = $HealthBar
 
+@onready var death_sprite = $DeathSprite
+var show_death_sprite_delay = 0.3
+
+var unit_type = "enemy"
+
 func _ready():
-	pass	
+	death_sprite.hide()
+	pass
 
 func _process(delta):
 	# TODO: BUG - Health bar shouldn't rotate with the character. Put it into level canvas layer.
@@ -21,4 +27,20 @@ func _process(delta):
 func take_damage(amount):
 	current_health -= amount
 	current_health = max(current_health, 0)
-	health_bar.update_health(current_health)
+	print(current_health)
+	if current_health <= 0:
+		die()
+	else:
+		health_bar.update_health(current_health, max_health)
+
+func die():
+	health_bar.hide()
+
+	var timer = Timer.new()
+	get_tree().root.add_child(timer)
+	timer.start(show_death_sprite_delay)
+	death_sprite.show()
+
+	await timer.timeout
+	timer.queue_free()
+	queue_free()

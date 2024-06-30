@@ -17,14 +17,15 @@ script = ExtResource("1_ke0hs")
 
 [node name="ProgressBar" type="ProgressBar" parent="."]
 material = SubResource("CanvasItemMaterial_ytmol")
+layout_mode = 0
 offset_right = 5.0
 offset_bottom = 128.0
 rotation = -1.5708
 theme_override_styles/fill = SubResource("StyleBoxFlat_sh0wg")
-min_value = 50.0
 step = 1.0
-value = 50.0
+value = 100.0
 rounded = true
+fill_mode = 2
 show_percentage = false
 
 [node name="Timer" type="Timer" parent="."]

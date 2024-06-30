@@ -7,7 +7,7 @@ var target_position = null
 @onready var target_line = $TargetLine
 @onready var turret = $TankTurretSprite
 
-var shell_scene = preload("res://scenes/tank_shell.tscn")
+var shell_scene = preload("res://scenes/projectile.tscn")
 @onready var shell_container = $ShellContainer
 
 func _ready():
@@ -32,7 +32,9 @@ func _physics_process(delta):
 	if target_position:
 		var direction = (target_position - global_position).normalized()
 		if global_position.distance_to(target_position) > 5:
-			velocity = direction * move_speed
+			# TODO: BUG - Speed is nil
+			#velocity = direction * speed
+			velocity = direction * 200
 			look_at(target_position)
 			move_and_slide()
 		else:
@@ -79,6 +81,10 @@ func update_line():
 #
 ############################################################################################################################
 func shoot():
+	# TODO:
+	#	- Fire from turret muzzle
+	#	- Add fire VFX
+	#	- Play sound
 	var mouse_pos = get_global_mouse_position()
 	var shell_inst = shell_scene.instantiate()
 	var direction = (mouse_pos - global_position).normalized()
