@@ -1,0 +1,26 @@
+[gd_scene load_steps=5 format=3 uid="uid://beek4k4dgldo3"]
+
+[ext_resource type="PackedScene" uid="uid://di5rl8qlxctbd" path="res://scenes/unit.tscn" id="1_glp5s"]
+[ext_resource type="Script" path="res://scripts/player.gd" id="2_gvx20"]
+[ext_resource type="Texture2D" uid="uid://6s6i4laudgdr" path="res://assets/tilesheets/towerDefense_tilesheet@2.png" id="3_4vmpk"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_hxlmd"]
+size = Vector2(115.151, 78.7879)
+
+[node name="PlayerTank" instance=ExtResource("1_glp5s")]
+collision_layer = 2
+collision_mask = 25
+script = ExtResource("2_gvx20")
+
+[node name="TankTurretSprite" type="Sprite2D" parent="." index="2"]
+texture = ExtResource("3_4vmpk")
+region_enabled = true
+region_rect = Rect2(1920, 1536, 128, 128)
+
+[node name="HitboxComponent" parent="." index="5"]
+collision_layer = 8
+collision_mask = 25
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HitboxComponent" index="0"]
+position = Vector2(3.03033, 0)
+shape = SubResource("RectangleShape2D_hxlmd")

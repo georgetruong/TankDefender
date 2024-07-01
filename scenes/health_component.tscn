@@ -1,0 +1,10 @@
+[gd_scene load_steps=3 format=3 uid="uid://bk33onv6y4w16"]
+
+[ext_resource type="Script" path="res://scripts/health_component.gd" id="1_jj7y8"]
+[ext_resource type="PackedScene" uid="uid://bqlp08elp3jey" path="res://scenes/health_bar.tscn" id="2_uwif8"]
+
+[node name="HealthComponent" type="Node2D"]
+script = ExtResource("1_jj7y8")
+
+[node name="HealthBar" parent="." instance=ExtResource("2_uwif8")]
+metadata/_edit_use_anchors_ = true

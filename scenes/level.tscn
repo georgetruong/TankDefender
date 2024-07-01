@@ -1,11 +1,24 @@
 [gd_scene load_steps=3 format=3 uid="uid://ohbqqmgiyvqf"]
 
-[ext_resource type="PackedScene" uid="uid://elah1xi3jlm2" path="res://scenes/tank.tscn" id="1_y77hv"]
-[ext_resource type="PackedScene" uid="uid://bk1d14puhyj82" path="res://scenes/enemy_unit.tscn" id="2_54kv0"]
+[ext_resource type="PackedScene" uid="uid://bairbkgtfa6h2" path="res://scenes/enemy_tank.tscn" id="2_eei1n"]
+[ext_resource type="PackedScene" uid="uid://beek4k4dgldo3" path="res://scenes/player_tank.tscn" id="2_kip14"]
 
 [node name="Level" type="Node2D"]
 
-[node name="Tank" parent="." instance=ExtResource("1_y77hv")]
+[node name="PlayerTank" parent="." instance=ExtResource("2_kip14")]
+position = Vector2(414, 245)
+motion_mode = 0
 
-[node name="EnemyUnit" parent="." instance=ExtResource("2_54kv0")]
-position = Vector2(935, 198)
+[node name="EnemyTank" parent="." instance=ExtResource("2_eei1n")]
+
+[node name="EnemyTank2" parent="." instance=ExtResource("2_eei1n")]
+position = Vector2(460, 410)
+
+[node name="EnemyTank3" parent="." instance=ExtResource("2_eei1n")]
+position = Vector2(734, 322)
+
+[node name="EnemyTank4" parent="." instance=ExtResource("2_eei1n")]
+position = Vector2(725, 150)
+
+[node name="EnemyTank5" parent="." instance=ExtResource("2_eei1n")]
+position = Vector2(104, 333)

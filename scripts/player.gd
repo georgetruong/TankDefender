@@ -1,6 +1,6 @@
 extends Unit
 
-class_name Tank
+class_name Player
 
 var target_position = null
 
@@ -11,6 +11,7 @@ var shell_scene = preload("res://scenes/projectile.tscn")
 
 func _ready():
 	super._ready()
+	team = Globals.Team.PLAYER
 	setup_target_line()
 
 func _process(delta):
@@ -22,6 +23,7 @@ func _unhandled_input(event):
 	if event is InputEventMouseButton and event.button_index == MOUSE_BUTTON_RIGHT and event.pressed:
 		target_position = get_global_mouse_position()
 	elif event is InputEventMouseButton and event.button_index == MOUSE_BUTTON_LEFT and event.pressed:
+		# TODO: hold down button to continuously attack
 		attack()
 
 func _physics_process(delta):
@@ -84,4 +86,5 @@ func attack():
 	shell_inst.linear_velocity = direction * 500
 	shell_inst.rotation = direction.angle()
 
+	shell_inst.team = team
 	get_tree().root.add_child(shell_inst)

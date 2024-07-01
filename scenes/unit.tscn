@@ -1,22 +1,18 @@
-[gd_scene load_steps=6 format=3 uid="uid://bjk0ex4yc0npm"]
+[gd_scene load_steps=6 format=3 uid="uid://di5rl8qlxctbd"]
 
 [ext_resource type="Script" path="res://scripts/unit.gd" id="1_kvfto"]
-[ext_resource type="PackedScene" uid="uid://bqlp08elp3jey" path="res://scenes/health_bar.tscn" id="2_md11i"]
 [ext_resource type="PackedScene" uid="uid://h57e5o142ttl" path="res://scenes/tilesheet_sprite.tscn" id="3_vb6eg"]
 [ext_resource type="Texture2D" uid="uid://cnaj4k68qsn4y" path="res://assets/tilesheets/topDownTanks_objects_tilesheet@2.png" id="4_sgxej"]
-
-[sub_resource type="CircleShape2D" id="CircleShape2D_tr6mt"]
-radius = 64.0
+[ext_resource type="PackedScene" uid="uid://bk33onv6y4w16" path="res://scenes/health_component.tscn" id="5_nuct5"]
+[ext_resource type="PackedScene" uid="uid://bi8uttk4f0x87" path="res://scenes/hitbox_component.tscn" id="6_wflfl"]
 
 [node name="Unit" type="CharacterBody2D"]
 position = Vector2(217, 122)
 scale = Vector2(0.33, 0.33)
 collision_layer = 0
 collision_mask = 0
+motion_mode = 1
 script = ExtResource("1_kvfto")
-
-[node name="HealthBar" parent="." instance=ExtResource("2_md11i")]
-metadata/_edit_use_anchors_ = true
 
 [node name="TargetLine" type="Line2D" parent="."]
 
@@ -28,7 +24,7 @@ visible = false
 texture = ExtResource("4_sgxej")
 region_rect = Rect2(130, 0, 112, 112)
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-shape = SubResource("CircleShape2D_tr6mt")
+[node name="HealthComponent" parent="." instance=ExtResource("5_nuct5")]
 
-[node name="ProjectilesContainer" type="Node2D" parent="."]
+[node name="HitboxComponent" parent="." node_paths=PackedStringArray("health_component") instance=ExtResource("6_wflfl")]
+health_component = NodePath("../HealthComponent")

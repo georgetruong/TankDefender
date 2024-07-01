@@ -1,22 +1,23 @@
 extends RigidBody2D
 
+@onready var hitbox_component = $HitboxComponent
+
 @export var speed = 500
 @export var damage = 50
 
-@onready var area = $Area2D
+var team: Globals.Team = Globals.Team.PLAYER
 
 func _ready():
 	gravity_scale = 0
 	lock_rotation = true
 
-	area.body_entered.connect(_on_body_entered)
-
 	await get_tree().create_timer(2.0).timeout
 	queue_free()
 
-func _on_body_entered(body):
-	# TODO: Add explosion VFX and sound on collision
-	# TODO: Direct hit damage and also splash damage
-	if body is EnemyUnit:
-		body.take_damage(damage)
-	queue_free()
+func is_collision_with_enemy(area):
+	return area.get_parent().team != team
+
+func _on_hitbox_component_area_entered(area):
+	if area is HitboxComponent and is_collision_with_enemy(area):
+		area.damage(damage)
+		queue_free()
