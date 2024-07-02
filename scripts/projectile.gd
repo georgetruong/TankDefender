@@ -11,10 +11,11 @@ func _ready():
 	gravity_scale = 0
 	lock_rotation = true
 
-	await get_tree().create_timer(2.0).timeout
+	await get_tree().create_timer(5.0).timeout
 	queue_free()
 
 func is_collision_with_enemy(area):
+	# TODO: Fix using collision layers?
 	return area.get_parent().team != team
 
 func _on_hitbox_component_area_entered(area):

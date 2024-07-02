@@ -10,20 +10,24 @@ var unit_type = Globals.UnitType.GROUND
 @onready var hitbox_component = $HitboxComponent
 
 @export var move_speed = 200
-
 @export var sprite_size: Vector2 = Vector2(128, 128)
+
+@onready var attack_delay_timer = $AttackDelayTimer
+@export var attack_delay: float = 1.0
+var can_attack: bool = true
 
 @onready var death_sprite = $DeathSprite
 var show_death_sprite_delay = 0.3
 
 func _ready():
 	death_sprite.hide()
-	pass
+	attack_delay_timer.one_shot = true
+	attack_delay_timer.timeout.connect(_on_attack_delay_timer)
 
 func _process(delta):
 	pass
 
-func attack():
+func attack(pos: Vector2):
 	pass
 
 func die():
@@ -38,3 +42,6 @@ func die():
 	await timer.timeout
 	timer.queue_free()
 	queue_free()
+
+func _on_attack_delay_timer():
+	pass

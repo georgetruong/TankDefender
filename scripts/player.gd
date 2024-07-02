@@ -19,12 +19,17 @@ func _process(delta):
 	var mouse_position = get_global_mouse_position()
 	turret.look_at(mouse_position)	
 
+func is_input_left_click(event):
+	return event is InputEventMouseButton and event.button_index == MOUSE_BUTTON_LEFT and event.pressed
+
 func _unhandled_input(event):
 	if event is InputEventMouseButton and event.button_index == MOUSE_BUTTON_RIGHT and event.pressed:
 		target_position = get_global_mouse_position()
-	elif event is InputEventMouseButton and event.button_index == MOUSE_BUTTON_LEFT and event.pressed:
+	elif is_input_left_click(event) and can_attack: 
 		# TODO: hold down button to continuously attack
-		attack()
+		attack(get_global_mouse_position())
+		can_attack = false
+		attack_delay_timer.start(attack_delay)
 
 func _physics_process(delta):
 	if target_position:
@@ -73,14 +78,16 @@ func update_line():
 # Attack
 #
 ############################################################################################################################
-func attack():
+func _on_attack_delay_timer():
+	can_attack = true
+
+func attack(pos: Vector2):
 	# TODO:
 	#	- Fire from turret muzzle
 	#	- Add fire VFX
 	#	- Play sound
-	var mouse_pos = get_global_mouse_position()
 	var shell_inst = shell_scene.instantiate()
-	var direction = (mouse_pos - global_position).normalized()
+	var direction = (pos - global_position).normalized()
 
 	shell_inst.global_position = global_position
 	shell_inst.linear_velocity = direction * 500

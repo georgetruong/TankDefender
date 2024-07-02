@@ -8,7 +8,6 @@
 
 [node name="Unit" type="CharacterBody2D"]
 position = Vector2(217, 122)
-scale = Vector2(0.33, 0.33)
 collision_layer = 0
 collision_mask = 0
 motion_mode = 1
@@ -28,3 +27,5 @@ region_rect = Rect2(130, 0, 112, 112)
 
 [node name="HitboxComponent" parent="." node_paths=PackedStringArray("health_component") instance=ExtResource("6_wflfl")]
 health_component = NodePath("../HealthComponent")
+
+[node name="AttackDelayTimer" type="Timer" parent="."]

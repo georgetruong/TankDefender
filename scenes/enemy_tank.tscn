@@ -1,22 +1,35 @@
-[gd_scene load_steps=4 format=3 uid="uid://bairbkgtfa6h2"]
+[gd_scene load_steps=5 format=3 uid="uid://bairbkgtfa6h2"]
 
 [ext_resource type="PackedScene" uid="uid://di5rl8qlxctbd" path="res://scenes/unit.tscn" id="1_ohp17"]
 [ext_resource type="Script" path="res://scripts/enemy_unit.gd" id="2_n8et2"]
+[ext_resource type="PackedScene" uid="uid://h57e5o142ttl" path="res://scenes/tilesheet_sprite.tscn" id="3_s3fwf"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_eha3s"]
-size = Vector2(106.061, 78.7879)
+size = Vector2(110.546, 78.7879)
 
 [node name="EnemyTank" instance=ExtResource("1_ohp17")]
 collision_layer = 8
 collision_mask = 7
 script = ExtResource("2_n8et2")
+attack_range = null
 move_speed = null
 sprite_size = null
+attack_delay = null
 
-[node name="HitboxComponent" parent="." index="4"]
+[node name="Hitbox" type="CollisionShape2D" parent="." index="0"]
+position = Vector2(0.727158, 0)
+shape = SubResource("RectangleShape2D_eha3s")
+
+[node name="TankBodySprite" parent="." index="2"]
+region_rect = Rect2(2048, 1408, 128, 128)
+
+[node name="TankTurretSprite" parent="." index="3" groups=["enemy"] instance=ExtResource("3_s3fwf")]
+region_rect = Rect2(2048, 1536, 128, 128)
+
+[node name="HitboxComponent" parent="." index="6"]
 collision_layer = 8
 collision_mask = 7
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="HitboxComponent" index="0"]
-position = Vector2(-1.5152, 0)
+position = Vector2(0.727158, 0)
 shape = SubResource("RectangleShape2D_eha3s")

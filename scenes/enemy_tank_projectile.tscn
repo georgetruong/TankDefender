@@ -1,0 +1,8 @@
+[gd_scene load_steps=2 format=3 uid="uid://crjopdu72duh2"]
+
+[ext_resource type="PackedScene" uid="uid://5nfgkuwopp6a" path="res://scenes/projectile.tscn" id="1_nboxx"]
+
+[node name="EnemyTankProjectile" instance=ExtResource("1_nboxx")]
+
+[node name="TilesheetSprite" parent="." index="0"]
+region_rect = Rect2(554, 585, 16, 32)

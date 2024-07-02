@@ -8,7 +8,7 @@ var hide_delay = 3.0
 func _ready():
 	#hide()
 	timer.one_shot = true
-	timer.timeout.connect(_on_timer_hideout)
+	timer.timeout.connect(_on_timer_timeout)
 	setup_progress_bar()
 
 func setup_progress_bar():
@@ -36,6 +36,6 @@ func update_health(current_health, max_health):
 	timer.start(hide_delay)
 
 
-func _on_timer_hideout():
+func _on_timer_timeout():
 	#hide()
 	pass
