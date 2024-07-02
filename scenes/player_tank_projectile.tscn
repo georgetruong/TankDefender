@@ -1,0 +1,5 @@
+[gd_scene load_steps=2 format=3 uid="uid://bnqwhjklbvq7d"]
+
+[ext_resource type="PackedScene" uid="uid://5nfgkuwopp6a" path="res://scenes/projectile_base.tscn" id="1_54q77"]
+
+[node name="PlayerTankProjectile" instance=ExtResource("1_54q77")]

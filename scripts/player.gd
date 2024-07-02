@@ -7,7 +7,7 @@ var target_position = null
 @onready var target_line = $TargetLine
 @onready var turret = $TankTurretSprite
 
-var shell_scene = preload("res://scenes/projectile.tscn")
+var shell_scene = preload("res://scenes/player_tank_projectile.tscn")
 
 func _ready():
 	super._ready()
