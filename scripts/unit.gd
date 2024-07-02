@@ -13,6 +13,7 @@ var unit_type = Globals.UnitType.GROUND
 @export var sprite_size: Vector2 = Vector2(128, 128)
 
 @onready var attack_delay_timer = $AttackDelayTimer
+@onready var attack_raycast = $AttackRayCast
 @export var attack_delay: float = 1.0
 var can_attack: bool = true
 

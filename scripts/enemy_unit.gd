@@ -20,11 +20,11 @@ func _ready():
 
 func _physics_process(delta: float) -> void:
 	turret_sprite.look_at(player.global_position)
-	if is_in_attack_range() and can_attack:
+	if has_line_of_sight() and is_in_attack_range() and can_attack:
 		attack(player.global_position)
 		can_attack = false
 		attack_delay_timer.start(attack_delay)
-	elif !is_in_attack_range():
+	else:
 		var next_position = nav_agent.get_next_path_position()
 		var direction = (next_position - global_position).normalized()
 		velocity = direction * move_speed
@@ -33,6 +33,19 @@ func _physics_process(delta: float) -> void:
 
 func is_in_attack_range():
 	return global_position.distance_to(player.global_position) <= attack_range
+
+func has_line_of_sight() -> bool:
+	if !player:
+		return false
+
+	attack_raycast.global_position = global_position
+	attack_raycast.target_position = to_local(player.global_position)
+	attack_raycast.force_raycast_update()
+
+	if attack_raycast.is_colliding():
+		return attack_raycast.get_collider() == player
+	else:
+		return true
 
 func attack(pos: Vector2):	
 	var shell_inst = shell_scene.instantiate()

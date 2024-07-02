@@ -31,6 +31,8 @@ health_component = NodePath("../HealthComponent")
 
 [node name="AttackDelayTimer" type="Timer" parent="."]
 
+[node name="AttackRayCast" type="RayCast2D" parent="."]
+
 [node name="NavigationAgent2D" type="NavigationAgent2D" parent="."]
 debug_enabled = true
 
