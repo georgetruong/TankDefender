@@ -16,9 +16,11 @@ func _ready():
 	super._ready()
 	team = Globals.Team.ENEMY
 	player = get_tree().get_first_node_in_group("player")
-	make_path()
 
 func _physics_process(delta: float) -> void:
+	if !player:
+		return
+
 	turret_sprite.look_at(player.global_position)
 	if has_line_of_sight() and is_in_attack_range() and can_attack:
 		attack(player.global_position)
