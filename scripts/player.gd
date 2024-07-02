@@ -89,9 +89,11 @@ func attack(pos: Vector2):
 	var shell_inst = shell_scene.instantiate()
 	var direction = (pos - global_position).normalized()
 
-	shell_inst.global_position = global_position
-	shell_inst.linear_velocity = direction * 500
+	shell_inst.global_position = global_position + direction * 100
+	shell_inst.linear_velocity = direction * shell_inst.speed
 	shell_inst.rotation = direction.angle()
 
-	shell_inst.team = team
+	shell_inst.set_team_collision(team)
+	shell_inst.set_collision_layer(Globals.PhysicsLayers["player_projectiles"])
+
 	get_tree().root.add_child(shell_inst)
