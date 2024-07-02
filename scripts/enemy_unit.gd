@@ -50,6 +50,7 @@ func has_line_of_sight() -> bool:
 		return true
 
 func attack(pos: Vector2):	
+	# TODO: Refactor into Unit
 	var shell_inst = shell_scene.instantiate()
 	var direction = (pos - global_position).normalized()
 

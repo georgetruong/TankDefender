@@ -39,13 +39,10 @@ func set_team_collision(team_type: Globals.Team):
 	else:
 		print_debug("TEAM TYPE NOT IMPLEMENTED")
 
-	var mask_flag = team_type == Globals.Team.PLAYER
-	set_collision_mask_value(Globals.PhysicsLayers["player_units"], mask_flag)
-	set_collision_mask_value(Globals.PhysicsLayers["player_projectiles"], mask_flag)
-	set_collision_mask_value(Globals.PhysicsLayers["enemy_units"], !mask_flag)
-	set_collision_mask_value(Globals.PhysicsLayers["enemy_projectiles"], !mask_flag)
-
 	set_collision_mask_value(Globals.PhysicsLayers["world"], true)
+	set_collision_mask_value(Globals.PhysicsLayers["player_projectiles"], false)
+	set_collision_mask_value(Globals.PhysicsLayers["enemy_projectiles"], false)
 
-	print("%b" % collision_mask)
-	
+	var mask_flag = team_type == Globals.Team.PLAYER
+	set_collision_mask_value(Globals.PhysicsLayers["player_units"], !mask_flag)
+	set_collision_mask_value(Globals.PhysicsLayers["enemy_units"], mask_flag)

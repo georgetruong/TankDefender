@@ -86,6 +86,8 @@ func attack(pos: Vector2):
 	#	- Fire from turret muzzle
 	#	- Add fire VFX
 	#	- Play sound
+
+	# TODO: Refactor into Unit
 	var shell_inst = shell_scene.instantiate()
 	var direction = (pos - global_position).normalized()
 
