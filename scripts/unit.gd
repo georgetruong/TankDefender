@@ -45,3 +45,6 @@ func die():
 
 func _on_attack_delay_timer():
 	pass
+
+func _on_nav_timer_timeout():
+	pass # Replace with function body.

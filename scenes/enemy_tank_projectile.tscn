@@ -4,5 +4,5 @@
 
 [node name="EnemyTankProjectile" instance=ExtResource("1_2sak0")]
 
-[node name="TilesheetSprite" parent="." index="0"]
+[node name="TilesheetSprite" parent="." index="1"]
 region_rect = Rect2(554, 585, 16, 32)

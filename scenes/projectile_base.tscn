@@ -16,6 +16,10 @@ script = ExtResource("1_yq2hw")
 speed = 1500
 damage = 25
 
+[node name="Hitbox" type="CollisionShape2D" parent="."]
+rotation = 1.5708
+shape = SubResource("CapsuleShape2D_mvdlh")
+
 [node name="TilesheetSprite" parent="." instance=ExtResource("2_h88rq")]
 rotation = 1.5708
 texture = ExtResource("3_rnxsu")

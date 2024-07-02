@@ -9,23 +9,27 @@ var shell_scene = preload("res://scenes/enemy_tank_projectile.tscn")
 
 @export var attack_range: float = 500.0
 
+@onready var nav_agent := $NavigationAgent2D as NavigationAgent2D
+@onready var nav_timer = $NavTimer
+
 func _ready():
 	super._ready()
 	team = Globals.Team.ENEMY
-
-func _process(delta):
 	player = get_tree().get_first_node_in_group("player")
-	if player:
-		turret_sprite.look_at(player.global_position)
-		if is_in_attack_range() and can_attack:
-			attack(player.global_position)
-			can_attack = false
-			attack_delay_timer.start(attack_delay)
-		elif !is_in_attack_range():
-			var direction = (player.global_position - global_position).normalized()
-			velocity = direction * move_speed
-			look_at(player.position)
-			move_and_slide()
+	make_path()
+
+func _physics_process(delta: float) -> void:
+	turret_sprite.look_at(player.global_position)
+	if is_in_attack_range() and can_attack:
+		attack(player.global_position)
+		can_attack = false
+		attack_delay_timer.start(attack_delay)
+	elif !is_in_attack_range():
+		var next_position = nav_agent.get_next_path_position()
+		var direction = (next_position - global_position).normalized()
+		velocity = direction * move_speed
+		move_and_slide()
+		look_at(next_position)
 
 func is_in_attack_range():
 	return global_position.distance_to(player.global_position) <= attack_range
@@ -43,3 +47,9 @@ func attack(pos: Vector2):
 
 func _on_attack_delay_timer():
 	can_attack = true
+
+func make_path() -> void:
+	nav_agent.target_position = player.global_position
+
+func _on_nav_timer_timeout():
+	make_path()
