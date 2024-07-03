@@ -1,0 +1,18 @@
+[gd_scene load_steps=3 format=3 uid="uid://d2fn7tac5uy6q"]
+
+[ext_resource type="Script" path="res://scripts/enemy_spawner.gd" id="1_nqej7"]
+[ext_resource type="PackedScene" uid="uid://bairbkgtfa6h2" path="res://scenes/enemy_tank.tscn" id="2_fsqa3"]
+
+[node name="EnemySpawner" type="Node2D"]
+script = ExtResource("1_nqej7")
+enemy_scene = ExtResource("2_fsqa3")
+
+[node name="SpawnPositions" type="Node2D" parent="."]
+
+[node name="Marker2D" type="Marker2D" parent="SpawnPositions"]
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 5.0
+autostart = true
+
+[connection signal="timeout" from="Timer" to="." method="_on_timeout"]
