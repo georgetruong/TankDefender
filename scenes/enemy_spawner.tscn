@@ -1,10 +1,36 @@
-[gd_scene load_steps=3 format=3 uid="uid://d2fn7tac5uy6q"]
+[gd_scene load_steps=3 format=3 uid="uid://bnu35vi520epm"]
 
-[ext_resource type="Script" path="res://scripts/enemy_spawner.gd" id="1_nqej7"]
 [ext_resource type="PackedScene" uid="uid://bairbkgtfa6h2" path="res://scenes/enemy_tank.tscn" id="2_fsqa3"]
 
+[sub_resource type="GDScript" id="GDScript_6t8yc"]
+script/source = "extends Node2D
+
+signal enemy_spawned(enemy_instance)
+
+@export var enemy_scene: PackedScene 
+
+@onready var timer = $Timer
+@onready var spawn_positions = $SpawnPositions
+
+func _ready():
+	pass
+
+func _on_timeout():
+	print(\"spawning enemy\")
+	spawn_enemy()
+
+func spawn_enemy():    
+	var spawn_positions_array = spawn_positions.get_children()
+	var random_spawn_position = spawn_positions_array.pick_random() 
+
+	var enemy_instance = enemy_scene.instantiate()
+	enemy_instance.global_position = random_spawn_position.global_position
+
+	emit_signal(\"enemy_spawned\", enemy_instance)
+"
+
 [node name="EnemySpawner" type="Node2D"]
-script = ExtResource("1_nqej7")
+script = SubResource("GDScript_6t8yc")
 enemy_scene = ExtResource("2_fsqa3")
 
 [node name="SpawnPositions" type="Node2D" parent="."]

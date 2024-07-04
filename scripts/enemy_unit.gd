@@ -59,6 +59,7 @@ func attack(pos: Vector2):
 	shell_inst.global_position = global_position + direction * 100
 	shell_inst.linear_velocity = direction * shell_inst.speed
 	shell_inst.rotation = direction.angle()
+	shell_inst.damage = 0
 
 	shell_inst.set_team_collision(team)
 	get_tree().root.add_child(shell_inst)
@@ -67,7 +68,10 @@ func _on_attack_delay_timer():
 	can_attack = true
 
 func make_path() -> void:
-	nav_agent.target_position = player.global_position
+	if player != null:
+		nav_agent.target_position = player.global_position
+	else:
+		nav_agent.target_position = global_position
 
 func _on_nav_timer_timeout():
 	make_path()

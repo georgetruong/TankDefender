@@ -1,4 +1,5 @@
 extends RigidBody2D
+class_name Projectile
 
 @onready var hitbox_component = $HitboxComponent
 
@@ -18,12 +19,14 @@ func _ready():
 	queue_free()
 
 func is_collision_with_enemy(area):
-	# TODO: Fix using collision layers?
 	return area.get_parent().team != team
 
 func _on_hitbox_component_area_entered(area):
 	if area is HitboxComponent and is_collision_with_enemy(area):
 		area.damage(damage)
+		queue_free()
+	elif area is HitboxComponent:
+		#print("projectile collision")
 		queue_free()
 
 func _on_body_entered(body:Node):
