@@ -1,0 +1,53 @@
+[gd_scene load_steps=6 format=3 uid="uid://chtxphosmime"]
+
+[ext_resource type="Script" path="res://scripts/hud.gd" id="1_h4tdh"]
+[ext_resource type="FontFile" uid="uid://8y0f1qfb7kyo" path="res://assets/fonts/Kenney Pixel Square.ttf" id="1_vve5b"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_copfl"]
+font = ExtResource("1_vve5b")
+font_size = 20
+
+[sub_resource type="LabelSettings" id="LabelSettings_c2uo2"]
+font = ExtResource("1_vve5b")
+font_size = 20
+
+[sub_resource type="LabelSettings" id="LabelSettings_7ecpr"]
+font = ExtResource("1_vve5b")
+font_size = 20
+
+[node name="HUD" type="Control"]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+script = ExtResource("1_h4tdh")
+
+[node name="WaveLabel" type="Label" parent="."]
+layout_mode = 1
+offset_left = 20.0
+offset_top = 22.0
+offset_right = 100.0
+offset_bottom = 46.0
+text = "WAVE: 01"
+label_settings = SubResource("LabelSettings_copfl")
+
+[node name="TimeLabel" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_top = 99.0
+offset_right = 170.0
+offset_bottom = 129.0
+grow_horizontal = 2
+text = "NEXT WAVe: 30"
+label_settings = SubResource("LabelSettings_c2uo2")
+
+[node name="EnemiesLeftLabel" type="Label" parent="."]
+layout_mode = 1
+offset_left = 20.0
+offset_top = 61.0
+offset_right = 223.0
+offset_bottom = 91.0
+text = "ENEMIES LEFT: 10"
+label_settings = SubResource("LabelSettings_7ecpr")

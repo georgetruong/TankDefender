@@ -5,16 +5,37 @@ extends Node2D
 
 @export var enemy_scene: PackedScene 
 
-@onready var next_wave_timer = $NextWaveTimer
-@export var intial_wave_size: int = 1
+@onready var ui_layer = $UILayer
+@onready var hud = $UILayer/HUD
+
+@export var wave_time = 30
+@export var initial_wave_size: int = 1
 var wave_counter: int = 0
+var wave_timer = null
+var wave_time_left
 
 func _ready():
-	spawn_wave(intial_wave_size)
-	next_wave_timer.timeout.connect(_on_next_wave_timeout)
+	init_wave_timer()
+	spawn_wave(initial_wave_size)
+
+func _process(delta):
+	if enemies_left() == 0:
+		spawn_wave(initial_wave_size + (wave_counter / 5))
+	update_hud()
 
 func _on_enemy_died():
 	pass
+
+func init_wave_timer():
+	wave_time_left = wave_time
+	hud.set_time_label(wave_time_left)
+
+	wave_timer = Timer.new()
+	wave_timer.name = "WaveTimer"
+	wave_timer.wait_time = 1
+	wave_timer.timeout.connect(_on_wave_timeout)
+	add_child(wave_timer)
+	wave_timer.start()
 
 func spawn_enemy():
 	var spawn_positions_array = enemy_spawn_positions.get_children()
@@ -27,8 +48,22 @@ func spawn_enemy():
 
 func spawn_wave(num_enemies: int):
 	wave_counter += 1
+	wave_time_left = wave_time
+	hud.set_time_label(wave_time_left)
 	for i in num_enemies:
 		spawn_enemy()
 	
-func _on_next_wave_timeout():
-	spawn_wave(intial_wave_size + (wave_counter % 5))
+func _on_wave_timeout():
+	wave_time_left -= 1
+	if wave_time_left <= 0:
+		print(int(wave_counter / 5))
+		spawn_wave(initial_wave_size + int(wave_counter / 5))
+		update_hud()
+
+func enemies_left() -> int:
+	return enemy_container.get_children().size()
+
+func update_hud():
+	hud.set_wave_label(wave_counter)
+	hud.set_enemies_left_label(enemies_left())
+	hud.set_time_label(wave_time_left)

@@ -44,7 +44,7 @@ func set_team_collision(team_type: Globals.Team):
 	set_collision_mask_value(Globals.PhysicsLayers["world"], true)
 	set_collision_mask_value(Globals.PhysicsLayers["player_projectiles"], false)
 	set_collision_mask_value(Globals.PhysicsLayers["enemy_projectiles"], false)
-
+	
 	var mask_flag = team_type == Globals.Team.PLAYER
 	set_collision_mask_value(Globals.PhysicsLayers["player_units"], !mask_flag)
 	set_collision_mask_value(Globals.PhysicsLayers["enemy_units"], mask_flag)
