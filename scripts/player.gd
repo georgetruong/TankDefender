@@ -9,10 +9,13 @@ var target_position = null
 
 var shell_scene = preload("res://scenes/player_tank_projectile.tscn")
 
+@export var show_movement_line: bool = false
+
 func _ready():
 	super._ready()
 	team = Globals.Team.PLAYER
-	setup_target_line()
+	if show_movement_line:
+		setup_target_line()
 
 func _process(delta):
 	super._process(delta)
@@ -41,7 +44,8 @@ func _physics_process(delta):
 		else:
 			target_position = null
 			velocity = Vector2.ZERO
-	update_line()
+	if show_movement_line:
+		update_line()
 
 ############################################################################################################################
 # Movement Target Line
