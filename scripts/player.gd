@@ -94,7 +94,7 @@ func attack(pos: Vector2):
 	shell_inst.global_position = global_position + direction * 100
 	shell_inst.linear_velocity = direction * shell_inst.speed
 	shell_inst.rotation = direction.angle()
-	shell_inst.damage = 0
+	shell_inst.damage = 50
 	shell_inst.set_team_collision(team)
 	shell_inst.set_collision_layer(Globals.PhysicsLayers["player_projectiles"])
 

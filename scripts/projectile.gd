@@ -22,15 +22,15 @@ func is_collision_with_enemy(area):
 	return area.get_parent().team != team
 
 func _on_hitbox_component_area_entered(area):
+	linear_velocity = Vector2.ZERO
 	if area is HitboxComponent and is_collision_with_enemy(area):
 		area.damage(damage)
 		queue_free()
-	elif area is HitboxComponent:
-		#print("projectile collision")
-		queue_free()
 
 func _on_body_entered(body:Node):
-	if body is TileMap:
+	# NOTE: Handles general object collisions. Damage is handled by HitboxComponent.
+	if (body is TileMap) or (body is Unit) or (body is Projectile):
+		linear_velocity = Vector2.ZERO
 		queue_free()
 
 func set_team_collision(team_type: Globals.Team):
