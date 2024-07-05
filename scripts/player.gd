@@ -103,3 +103,11 @@ func attack(pos: Vector2):
 	shell_inst.set_collision_layer(Globals.PhysicsLayers["player_projectiles"])
 
 	get_tree().root.add_child(shell_inst)
+
+############################################################################################################################
+# Pickups
+#
+############################################################################################################################
+func pickup_health(_heal_amount: float):
+	if health_component:
+		health_component.heal(_heal_amount)

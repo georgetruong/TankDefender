@@ -1,7 +1,7 @@
 extends Node2D
 class_name HealthComponent
 
-@export var MAX_HEALTH : int = 100
+@export var MAX_HEALTH : float = 100.0
 var health : float 
 
 @onready var health_bar = $HealthBar
@@ -29,6 +29,11 @@ func damage(amount: float):
 		die()
 	else:
 		health_bar.update_health(health, MAX_HEALTH)
+	
+func heal(amount: float):
+	health += amount
+	health = min(MAX_HEALTH, health)
+	health_bar.update_health(health, MAX_HEALTH)
 
 func die():
 	get_parent().die()

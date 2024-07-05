@@ -1,6 +1,7 @@
 extends Unit
-
 class_name EnemyUnit
+
+signal spawned_health_pickup(spawn_pos)
 
 @onready var turret_sprite = $TankTurretSprite
 
@@ -11,6 +12,8 @@ var shell_scene = preload("res://scenes/enemy_tank_projectile.tscn")
 
 @onready var nav_agent := $NavigationAgent2D as NavigationAgent2D
 @onready var nav_timer = $NavTimer
+
+@export_range(0, 100) var spawn_pickup_chance = 20
 
 func _ready():
 	super._ready()
@@ -63,6 +66,12 @@ func attack(pos: Vector2):
 
 	shell_inst.set_team_collision(team)
 	get_tree().root.add_child(shell_inst)
+
+func die():
+	super.die()
+	var n = randf_range(0, 100)
+	if n <= spawn_pickup_chance:
+		spawned_health_pickup.emit(global_position)
 
 func _on_attack_delay_timer():
 	can_attack = true

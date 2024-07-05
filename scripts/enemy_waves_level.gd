@@ -2,8 +2,10 @@ extends Node2D
 
 @onready var enemy_container = $EnemyContainer
 @onready var enemy_spawn_positions = $EnemySpawnPositions
-
 @export var enemy_scene: PackedScene 
+
+var health_pickup_scene = preload("res://scenes/health_pickup.tscn")
+@onready var pickups_container = $PickupsContainer
 
 @onready var ui_layer = $UILayer
 @onready var hud = $UILayer/HUD
@@ -41,9 +43,10 @@ func spawn_enemy():
 	var spawn_positions_array = enemy_spawn_positions.get_children()
 	var random_spawn_position = spawn_positions_array.pick_random() 
 	var offset = Vector2(randf_range(-25, 25), randf_range(-25, 25))
-	var enemy_instance = enemy_scene.instantiate()
 
+	var enemy_instance = enemy_scene.instantiate()
 	enemy_instance.global_position = random_spawn_position.global_position + offset
+	enemy_instance.connect("spawned_health_pickup", _on_spawned_health_pickup)
 	enemy_container.add_child(enemy_instance)
 
 func spawn_wave(num_enemies: int):
@@ -67,3 +70,8 @@ func update_hud():
 	hud.set_wave_label(wave_counter)
 	hud.set_enemies_left_label(enemies_left())
 	hud.set_time_label(wave_time_left)
+
+func _on_spawned_health_pickup(spawn_pos):
+	var pickup_inst = health_pickup_scene.instantiate()
+	pickup_inst.global_position = spawn_pos
+	pickups_container.call_deferred("add_child", pickup_inst)
