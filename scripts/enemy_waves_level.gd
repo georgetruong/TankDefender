@@ -4,10 +4,14 @@ extends Node2D
 @onready var enemy_spawn_positions = $EnemySpawnPositions
 
 @export var enemy_scene: PackedScene 
-@export var intial_wave_size: int = 3
+
+@onready var next_wave_timer = $NextWaveTimer
+@export var intial_wave_size: int = 1
+var wave_counter: int = 0
 
 func _ready():
 	spawn_wave(intial_wave_size)
+	next_wave_timer.timeout.connect(_on_next_wave_timeout)
 
 func _on_enemy_died():
 	pass
@@ -19,10 +23,12 @@ func spawn_enemy():
 	var enemy_instance = enemy_scene.instantiate()
 
 	enemy_instance.global_position = random_spawn_position.global_position + offset
-	#enemy_instance.connect("died", _on_enemy_died)
 	enemy_container.add_child(enemy_instance)
 
 func spawn_wave(num_enemies: int):
+	wave_counter += 1
 	for i in num_enemies:
 		spawn_enemy()
 	
+func _on_next_wave_timeout():
+	spawn_wave(intial_wave_size + (wave_counter % 5))

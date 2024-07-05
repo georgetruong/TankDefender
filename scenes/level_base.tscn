@@ -36,6 +36,14 @@ show_movement_line = false
 move_speed = 500
 attack_delay = 0.5
 
+[node name="HealthBarsLayer" type="CanvasLayer" parent="."]
+
+[node name="HealthBarsContainer" type="Node2D" parent="HealthBarsLayer"]
+
 [node name="Camera2D" type="Camera2D" parent="."]
 position = Vector2(960, 510)
 zoom = Vector2(0.5, 0.5)
+
+[node name="NextWaveTimer" type="Timer" parent="."]
+wait_time = 15.0
+autostart = true

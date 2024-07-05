@@ -21,6 +21,7 @@ var can_attack: bool = true
 var show_death_sprite_delay = 0.3
 
 func _ready():
+	health_component.hide_health_bar()
 	death_sprite.hide()
 	attack_delay_timer.one_shot = true
 	attack_delay_timer.timeout.connect(_on_attack_delay_timer)

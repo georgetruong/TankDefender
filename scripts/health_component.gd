@@ -8,9 +8,15 @@ var health : float
 
 func _ready():
 	health = MAX_HEALTH
+	hide_health_bar()
 
 func _process(delta):
 	health_bar.update_health(health, MAX_HEALTH)
+	if health <  MAX_HEALTH:
+		show_health_bar()
+
+func show_health_bar():
+	health_bar.show()
 
 func hide_health_bar():
 	health_bar.hide()
@@ -25,5 +31,4 @@ func damage(amount: float):
 		health_bar.update_health(health, MAX_HEALTH)
 
 func die():
-	# TODO: Emit death signal to parent
-	get_parent().queue_free()
+	get_parent().die()

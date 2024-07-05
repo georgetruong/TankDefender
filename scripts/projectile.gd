@@ -11,7 +11,6 @@ var team: Globals.Team = Globals.Team.PLAYER
 func _ready():
 	gravity_scale = 0
 	lock_rotation = true
-
 	contact_monitor = true
 	max_contacts_reported = 1
 
