@@ -5,7 +5,7 @@ class_name Player
 var target_position = null
 
 @onready var target_line = $TargetLine
-@onready var turret = $TankTurretSprite
+@onready var turret = $TurretSprite
 
 var shell_scene = preload("res://scenes/player_tank_projectile.tscn")
 
@@ -46,6 +46,10 @@ func _physics_process(delta):
 			velocity = Vector2.ZERO
 	if show_movement_line:
 		update_line()
+
+func die():
+	super.die()
+	can_attack = false
 
 ############################################################################################################################
 # Movement Target Line

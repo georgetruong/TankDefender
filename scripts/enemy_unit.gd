@@ -3,7 +3,7 @@ class_name EnemyUnit
 
 signal spawned_health_pickup(spawn_pos)
 
-@onready var turret_sprite = $TankTurretSprite
+@onready var turret_sprite = $TurretSprite
 
 var player = null
 var shell_scene = preload("res://scenes/enemy_tank_projectile.tscn")
@@ -62,7 +62,7 @@ func attack(pos: Vector2):
 	shell_inst.global_position = global_position + direction * 100
 	shell_inst.linear_velocity = direction * shell_inst.speed
 	shell_inst.rotation = direction.angle()
-	shell_inst.damage = 10
+	shell_inst.damage = 25
 
 	shell_inst.set_team_collision(team)
 	get_tree().root.add_child(shell_inst)

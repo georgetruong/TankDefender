@@ -16,7 +16,7 @@ script = ExtResource("1_kvfto")
 
 [node name="TargetLine" type="Line2D" parent="."]
 
-[node name="TankBodySprite" parent="." instance=ExtResource("3_vb6eg")]
+[node name="BodySprite" parent="." instance=ExtResource("3_vb6eg")]
 region_rect = Rect2(1921, 1408, 128, 128)
 
 [node name="DeathSprite" parent="." instance=ExtResource("3_vb6eg")]

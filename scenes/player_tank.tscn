@@ -17,10 +17,10 @@ show_movement_line = false
 position = Vector2(3.03033, 0)
 shape = SubResource("CircleShape2D_b6xve")
 
-[node name="TankBodySprite" parent="." index="2"]
+[node name="BodySprite" parent="." index="2"]
 region_rect = Rect2(2048, 1408, 128, 128)
 
-[node name="TankTurretSprite" type="Sprite2D" parent="." index="3"]
+[node name="TurretSprite" type="Sprite2D" parent="." index="3"]
 texture = ExtResource("3_4vmpk")
 region_enabled = true
 region_rect = Rect2(2048, 1536, 128, 128)

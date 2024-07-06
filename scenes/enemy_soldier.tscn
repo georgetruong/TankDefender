@@ -1,0 +1,38 @@
+[gd_scene load_steps=5 format=3 uid="uid://i61hp0so0k66"]
+
+[ext_resource type="PackedScene" uid="uid://di5rl8qlxctbd" path="res://scenes/unit.tscn" id="1_oogql"]
+[ext_resource type="Script" path="res://scripts/enemy_unit.gd" id="2_n8can"]
+[ext_resource type="PackedScene" uid="uid://h57e5o142ttl" path="res://scenes/tilesheet_sprite.tscn" id="3_nknjx"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_6e1hh"]
+radius = 30.536
+
+[node name="EnemySoldier" groups=["enemy"] instance=ExtResource("1_oogql")]
+collision_layer = 8
+collision_mask = 15
+script = ExtResource("2_n8can")
+attack_range = 750.0
+spawn_pickup_chance = 20
+move_speed = 250
+
+[node name="Hitbox" type="CollisionShape2D" parent="." index="0"]
+position = Vector2(0.727158, 0)
+shape = SubResource("CircleShape2D_6e1hh")
+
+[node name="TankBodySprite" parent="." index="2"]
+visible = false
+region_rect = Rect2(1920, 1408.03, 128, 128)
+
+[node name="TankTurretSprite" parent="." index="3" groups=["enemy"] instance=ExtResource("3_nknjx")]
+region_rect = Rect2(1920, 1280, 128, 128)
+
+[node name="HitboxComponent" parent="." index="6"]
+collision_layer = 8
+collision_mask = 7
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HitboxComponent" index="0"]
+position = Vector2(0.727158, 0)
+shape = SubResource("CircleShape2D_6e1hh")
+
+[node name="NavigationAgent2D" parent="." index="9"]
+debug_enabled = false

@@ -33,6 +33,8 @@ func attack(pos: Vector2):
 	pass
 
 func die():
+	can_attack = false
+
 	if health_component:
 		health_component.hide_health_bar()
 

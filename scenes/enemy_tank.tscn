@@ -19,10 +19,7 @@ move_speed = 250
 position = Vector2(0.727158, 0)
 shape = SubResource("CircleShape2D_6e1hh")
 
-[node name="TankBodySprite" parent="." index="2"]
-region_rect = Rect2(1920, 1408.03, 128, 128)
-
-[node name="TankTurretSprite" parent="." index="3" groups=["enemy"] instance=ExtResource("3_s3fwf")]
+[node name="TurretSprite" parent="." index="3" groups=["enemy"] instance=ExtResource("3_s3fwf")]
 region_rect = Rect2(1928, 1536, 128, 128)
 
 [node name="HitboxComponent" parent="." index="6"]
