@@ -9,7 +9,6 @@ var unit_type = Globals.UnitType.GROUND
 @onready var health_component = $HealthComponent
 
 @export var move_speed = 200
-@export var sprite_size: Vector2 = Vector2(128, 128)
 
 @onready var attack_delay_timer = $AttackDelayTimer
 @onready var attack_raycast = $AttackRayCast

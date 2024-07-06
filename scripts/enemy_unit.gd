@@ -3,12 +3,12 @@ class_name EnemyUnit
 
 signal spawned_health_pickup(spawn_pos)
 
-@onready var turret_sprite = $TurretSprite
-
 var player = null
-var shell_scene = preload("res://scenes/enemy_tank_projectile.tscn")
 
+@export_group("Attacks")
+@export var projectile_scene: PackedScene = preload("res://scenes/enemy_tank_projectile.tscn")
 @export var attack_range: float = 500.0
+@export var attack_damage: float = 25.0
 
 @onready var nav_agent := $NavigationAgent2D as NavigationAgent2D
 @onready var nav_timer = $NavTimer
@@ -24,7 +24,10 @@ func _physics_process(delta: float) -> void:
 	if !player:
 		return
 
-	turret_sprite.look_at(player.global_position)
+	# TODO: Fix turrets for tanks
+	#if turret_sprite != null:
+	#	turret_sprite.look_at(player.global_position)
+
 	if has_line_of_sight() and is_in_attack_range() and can_attack:
 		attack(player.global_position)
 		can_attack = false
@@ -56,13 +59,13 @@ func has_line_of_sight() -> bool:
 
 func attack(pos: Vector2):	
 	# TODO: Refactor into Unit
-	var shell_inst = shell_scene.instantiate()
+	var shell_inst = projectile_scene.instantiate()
 	var direction = (pos - global_position).normalized()
 
 	shell_inst.global_position = global_position + direction * 100
 	shell_inst.linear_velocity = direction * shell_inst.speed
 	shell_inst.rotation = direction.angle()
-	shell_inst.damage = 25
+	shell_inst.damage = attack_damage
 
 	shell_inst.set_team_collision(team)
 	get_tree().root.add_child(shell_inst)

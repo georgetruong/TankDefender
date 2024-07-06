@@ -20,11 +20,11 @@ var wave_time_left
 
 func _ready():
 	init_wave_timer()
-	spawn_wave(initial_wave_size)
+	spawn_wave()
 
 func _process(delta):
 	if enemies_left() == 0:
-		spawn_wave(initial_wave_size + (wave_counter / 5))
+		spawn_wave()
 	update_hud()
 
 func _on_enemy_died():
@@ -41,7 +41,7 @@ func init_wave_timer():
 	add_child(wave_timer)
 	wave_timer.start()
 
-func spawn_enemy():
+func spawn_tank():
 	var spawn_positions_array = enemy_spawn_positions.get_children()
 	var random_spawn_position = spawn_positions_array.pick_random() 
 	var offset = Vector2(randf_range(-25, 25), randf_range(-25, 25))
@@ -61,18 +61,23 @@ func spawn_soldier():
 	soldier_instance.connect("spawned_health_pickup", _on_spawned_health_pickup)
 	enemy_container.add_child(soldier_instance)
 
-func spawn_wave(num_enemies: int):
+func spawn_wave():
 	wave_counter += 1
 	wave_time_left = wave_time
 	hud.set_time_label(wave_time_left)
-	for i in num_enemies:
-		spawn_enemy()
-		#spawn_soldier()
+
+	var num_soldiers = int(wave_counter / 5) * 2 + 3
+	for i in num_soldiers:
+		spawn_soldier()
+
+	var num_tanks = int(wave_counter / 5)
+	for i in num_tanks:
+		spawn_tank()
 	
 func _on_wave_timeout():
 	wave_time_left -= 1
 	if wave_time_left <= 0:
-		spawn_wave(initial_wave_size + int(wave_counter / 5))
+		spawn_wave()
 		update_hud()
 
 func enemies_left() -> int:

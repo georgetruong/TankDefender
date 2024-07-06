@@ -2,7 +2,7 @@
 
 [ext_resource type="PackedScene" uid="uid://di5rl8qlxctbd" path="res://scenes/unit.tscn" id="1_oogql"]
 [ext_resource type="Script" path="res://scripts/enemy_unit.gd" id="2_n8can"]
-[ext_resource type="PackedScene" uid="uid://h57e5o142ttl" path="res://scenes/tilesheet_sprite.tscn" id="3_nknjx"]
+[ext_resource type="PackedScene" uid="uid://crjopdu72duh2" path="res://scenes/enemy_tank_projectile.tscn" id="3_xwffd"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_6e1hh"]
 radius = 30.536
@@ -11,24 +11,21 @@ radius = 30.536
 collision_layer = 8
 collision_mask = 15
 script = ExtResource("2_n8can")
-attack_range = 750.0
-spawn_pickup_chance = 20
+projectile_scene = ExtResource("3_xwffd")
+attack_range = 200.0
+attack_damage = 5.0
+spawn_pickup_chance = 10
 move_speed = 250
 
 [node name="Hitbox" type="CollisionShape2D" parent="." index="0"]
 position = Vector2(0.727158, 0)
 shape = SubResource("CircleShape2D_6e1hh")
 
-[node name="TankTurretSprite" parent="." index="3" groups=["enemy"] instance=ExtResource("3_nknjx")]
+[node name="BodySprite" parent="." index="2"]
 region_rect = Rect2(1920, 1280, 128, 128)
 
-[node name="HitboxComponent" parent="." index="6"]
-collision_layer = 8
-collision_mask = 7
+[node name="HealthComponent" parent="." index="4"]
+MAX_HEALTH = 10.0
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="HitboxComponent" index="0"]
-position = Vector2(0.727158, 0)
-shape = SubResource("CircleShape2D_6e1hh")
-
-[node name="NavigationAgent2D" parent="." index="9"]
+[node name="NavigationAgent2D" parent="." index="7"]
 debug_enabled = false

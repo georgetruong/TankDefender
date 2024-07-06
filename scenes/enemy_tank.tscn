@@ -1,7 +1,8 @@
-[gd_scene load_steps=5 format=3 uid="uid://bairbkgtfa6h2"]
+[gd_scene load_steps=6 format=3 uid="uid://bairbkgtfa6h2"]
 
 [ext_resource type="PackedScene" uid="uid://di5rl8qlxctbd" path="res://scenes/unit.tscn" id="1_ohp17"]
 [ext_resource type="Script" path="res://scripts/enemy_unit.gd" id="2_n8et2"]
+[ext_resource type="PackedScene" uid="uid://crjopdu72duh2" path="res://scenes/enemy_tank_projectile.tscn" id="3_e42iy"]
 [ext_resource type="PackedScene" uid="uid://h57e5o142ttl" path="res://scenes/tilesheet_sprite.tscn" id="3_s3fwf"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_6e1hh"]
@@ -11,7 +12,9 @@ radius = 61.3055
 collision_layer = 8
 collision_mask = 15
 script = ExtResource("2_n8et2")
+projectile_scene = ExtResource("3_e42iy")
 attack_range = 750.0
+attack_damage = 25.0
 spawn_pickup_chance = 20
 move_speed = 250
 

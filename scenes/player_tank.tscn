@@ -13,22 +13,18 @@ collision_mask = 25
 script = ExtResource("2_gvx20")
 show_movement_line = false
 
-[node name="Hitbox" type="CollisionShape2D" parent="." index="0"]
+[node name="HitboxComponent#CollisionShape2D" type="CollisionShape2D" parent="." index="0"]
 position = Vector2(3.03033, 0)
 shape = SubResource("CircleShape2D_b6xve")
 
-[node name="BodySprite" parent="." index="2"]
+[node name="Hitbox" type="CollisionShape2D" parent="." index="1"]
+position = Vector2(3.03033, 0)
+shape = SubResource("CircleShape2D_b6xve")
+
+[node name="BodySprite" parent="." index="3"]
 region_rect = Rect2(2048, 1408, 128, 128)
 
-[node name="TurretSprite" type="Sprite2D" parent="." index="3"]
+[node name="TurretSprite" type="Sprite2D" parent="." index="4"]
 texture = ExtResource("3_4vmpk")
 region_enabled = true
 region_rect = Rect2(2048, 1536, 128, 128)
-
-[node name="HitboxComponent" parent="." index="6"]
-collision_layer = 8
-collision_mask = 25
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="HitboxComponent" index="0"]
-position = Vector2(3.03033, 0)
-shape = SubResource("CircleShape2D_b6xve")
