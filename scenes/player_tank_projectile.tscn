@@ -3,3 +3,6 @@
 [ext_resource type="PackedScene" uid="uid://5nfgkuwopp6a" path="res://scenes/projectile_base.tscn" id="1_54q77"]
 
 [node name="PlayerTankProjectile" instance=ExtResource("1_54q77")]
+
+[node name="TilesheetSprite" parent="." index="1"]
+region_rect = Rect2(554, 585, 16, 32)

@@ -12,6 +12,7 @@ collision_layer = 8
 collision_mask = 15
 script = ExtResource("2_n8et2")
 attack_range = 750.0
+spawn_pickup_chance = 20
 move_speed = 250
 
 [node name="Hitbox" type="CollisionShape2D" parent="." index="0"]
@@ -19,10 +20,10 @@ position = Vector2(0.727158, 0)
 shape = SubResource("CircleShape2D_6e1hh")
 
 [node name="TankBodySprite" parent="." index="2"]
-region_rect = Rect2(2048, 1408, 128, 128)
+region_rect = Rect2(1920, 1408.03, 128, 128)
 
 [node name="TankTurretSprite" parent="." index="3" groups=["enemy"] instance=ExtResource("3_s3fwf")]
-region_rect = Rect2(2048, 1536, 128, 128)
+region_rect = Rect2(1928, 1536, 128, 128)
 
 [node name="HitboxComponent" parent="." index="6"]
 collision_layer = 8

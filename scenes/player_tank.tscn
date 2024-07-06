@@ -11,15 +11,19 @@ radius = 61.31
 collision_layer = 2
 collision_mask = 25
 script = ExtResource("2_gvx20")
+show_movement_line = false
 
 [node name="Hitbox" type="CollisionShape2D" parent="." index="0"]
 position = Vector2(3.03033, 0)
 shape = SubResource("CircleShape2D_b6xve")
 
+[node name="TankBodySprite" parent="." index="2"]
+region_rect = Rect2(2048, 1408, 128, 128)
+
 [node name="TankTurretSprite" type="Sprite2D" parent="." index="3"]
 texture = ExtResource("3_4vmpk")
 region_enabled = true
-region_rect = Rect2(1920, 1536, 128, 128)
+region_rect = Rect2(2048, 1536, 128, 128)
 
 [node name="HitboxComponent" parent="." index="6"]
 collision_layer = 8
