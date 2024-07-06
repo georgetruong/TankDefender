@@ -10,7 +10,7 @@ radius = 33.0
 collision_layer = 32
 collision_mask = 2
 script = ExtResource("1_3ldu3")
-heal_amount = null
+heal_amount = 50.0
 
 [node name="TilesheetSprite" parent="." instance=ExtResource("1_3db8j")]
 modulate = Color(1, 0, 0, 1)
