@@ -7,7 +7,6 @@ var team = Globals.Team.ENEMY
 var unit_type = Globals.UnitType.GROUND
 
 @onready var health_component = $HealthComponent
-@onready var hitbox_component = $HitboxComponent
 
 @export var move_speed = 200
 @export var sprite_size: Vector2 = Vector2(128, 128)
@@ -31,6 +30,9 @@ func _process(delta):
 
 func attack(pos: Vector2):
 	pass
+
+func damage(_amount: float):
+	health_component.damage(_amount)
 
 func die():
 	can_attack = false

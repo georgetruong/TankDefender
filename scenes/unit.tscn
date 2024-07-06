@@ -1,10 +1,9 @@
-[gd_scene load_steps=6 format=3 uid="uid://di5rl8qlxctbd"]
+[gd_scene load_steps=5 format=3 uid="uid://di5rl8qlxctbd"]
 
 [ext_resource type="Script" path="res://scripts/unit.gd" id="1_kvfto"]
 [ext_resource type="PackedScene" uid="uid://h57e5o142ttl" path="res://scenes/tilesheet_sprite.tscn" id="3_vb6eg"]
 [ext_resource type="Texture2D" uid="uid://cnaj4k68qsn4y" path="res://assets/tilesheets/topDownTanks_objects_tilesheet@2.png" id="4_sgxej"]
 [ext_resource type="PackedScene" uid="uid://bk33onv6y4w16" path="res://scenes/health_component.tscn" id="5_nuct5"]
-[ext_resource type="PackedScene" uid="uid://bi8uttk4f0x87" path="res://scenes/hitbox_component.tscn" id="6_wflfl"]
 
 [node name="Unit" type="CharacterBody2D"]
 position = Vector2(217, 122)
@@ -25,9 +24,6 @@ texture = ExtResource("4_sgxej")
 region_rect = Rect2(130, 0, 112, 112)
 
 [node name="HealthComponent" parent="." instance=ExtResource("5_nuct5")]
-
-[node name="HitboxComponent" parent="." node_paths=PackedStringArray("health_component") instance=ExtResource("6_wflfl")]
-health_component = NodePath("../HealthComponent")
 
 [node name="AttackDelayTimer" type="Timer" parent="."]
 

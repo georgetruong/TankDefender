@@ -1,8 +1,6 @@
 extends RigidBody2D
 class_name Projectile
 
-@onready var hitbox_component = $HitboxComponent
-
 @export var speed = 1500
 @export var damage = 50
 
@@ -20,15 +18,13 @@ func _ready():
 func is_collision_with_enemy(area):
 	return area.get_parent().team != team
 
-func _on_hitbox_component_area_entered(area):
-	linear_velocity = Vector2.ZERO
-	if area is HitboxComponent and is_collision_with_enemy(area):
-		area.damage(damage)
-		queue_free()
-
 func _on_body_entered(body:Node):
 	# NOTE: Handles general object collisions. Damage is handled by HitboxComponent.
-	if (body is TileMap) or (body is Unit) or (body is Projectile):
+	if (body is TileMap) or (body is Projectile):
+		linear_velocity = Vector2.ZERO
+		queue_free()
+	if body is Unit:
+		body.damage(damage)
 		linear_velocity = Vector2.ZERO
 		queue_free()
 
