@@ -43,11 +43,9 @@ func _physics_process(delta: float) -> void:
 		look_at(next_position)
 
 func is_in_attack_range():
-	# TODO: Refactor into Unit
 	return global_position.distance_to(player.global_position) <= attack_range
 
 func has_line_of_sight() -> bool:
-	# TODO: Refactor into Unit
 	if !player:
 		return false
 

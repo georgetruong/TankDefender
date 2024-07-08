@@ -62,7 +62,7 @@ func spawn_wave():
 	wave_time_left = wave_time
 	hud.set_time_label(wave_time_left)
 
-	var num_soldiers = int(wave_counter / 5) * 2 + 3
+	var num_soldiers = int(wave_counter * 1.5 / 5) + 2
 	for i in num_soldiers:
 		spawn_enemy("soldier")
 
