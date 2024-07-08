@@ -9,3 +9,6 @@ func set_wave_label(_wave: int):
 
 func set_enemies_left_label(_enemies_left: int):
 	$EnemiesLeftLabel.text = "ENEMIES LEFT: " + str(_enemies_left)
+
+func set_score_label(_score: int):
+	$ScoreLabel.text = "SCORE: " + str(_score)

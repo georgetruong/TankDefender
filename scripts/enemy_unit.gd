@@ -1,9 +1,12 @@
 extends Unit
 class_name EnemyUnit
 
+signal enemy_died(score_amount)
 signal spawned_health_pickup(spawn_pos)
 
 var player = null
+
+@export var score_amount = 100
 
 @export_group("Attacks")
 @export var projectile_scene: PackedScene = preload("res://scenes/enemy_tank_projectile.tscn")
@@ -72,6 +75,7 @@ func attack(pos: Vector2):
 
 func die():
 	super.die()
+	enemy_died.emit(score_amount)
 	var n = randf_range(0, 100)
 	if n <= spawn_pickup_chance:
 		spawned_health_pickup.emit(global_position)

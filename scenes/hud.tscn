@@ -1,4 +1,4 @@
-[gd_scene load_steps=6 format=3 uid="uid://chtxphosmime"]
+[gd_scene load_steps=7 format=3 uid="uid://chtxphosmime"]
 
 [ext_resource type="Script" path="res://scripts/hud.gd" id="1_h4tdh"]
 [ext_resource type="FontFile" uid="uid://8y0f1qfb7kyo" path="res://assets/fonts/Kenney Pixel Square.ttf" id="1_vve5b"]
@@ -14,6 +14,12 @@ font_size = 20
 [sub_resource type="LabelSettings" id="LabelSettings_7ecpr"]
 font = ExtResource("1_vve5b")
 font_size = 20
+
+[sub_resource type="LabelSettings" id="LabelSettings_mks8l"]
+font = ExtResource("1_vve5b")
+font_size = 32
+outline_size = 5
+outline_color = Color(0, 0, 0, 1)
 
 [node name="HUD" type="Control"]
 layout_mode = 3
@@ -51,3 +57,18 @@ offset_right = 223.0
 offset_bottom = 91.0
 text = "ENEMIES LEFT: 10"
 label_settings = SubResource("LabelSettings_7ecpr")
+
+[node name="ScoreLabel" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = 1436.0
+offset_top = 26.0
+offset_right = 1856.0
+offset_bottom = 74.0
+grow_horizontal = 0
+text = "SCORE: 999999"
+label_settings = SubResource("LabelSettings_mks8l")
+horizontal_alignment = 2
+vertical_alignment = 1

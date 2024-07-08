@@ -19,7 +19,10 @@ var wave_counter: int = 0
 var wave_timer = null
 var wave_time_left
 
+var score = 0
+
 func _ready():
+	score = 0
 	init_wave_timer()
 	spawn_wave()
 
@@ -51,6 +54,7 @@ func spawn_enemy(_type = "soldier"):
 		enemy_inst = tank_scene.instantiate()
 	enemy_inst.global_position = random_spawn_position.global_position + offset
 	enemy_inst.connect("spawned_health_pickup", _on_spawned_health_pickup)
+	enemy_inst.connect("enemy_died", _on_enemy_died)
 	enemy_container.add_child(enemy_inst)
 
 func spawn_wave():
@@ -76,6 +80,7 @@ func enemies_left() -> int:
 	return enemy_container.get_children().size()
 
 func update_hud():
+	hud.set_score_label(score)
 	hud.set_wave_label(wave_counter)
 	hud.set_enemies_left_label(enemies_left())
 	hud.set_time_label(wave_time_left)
@@ -84,6 +89,10 @@ func _on_spawned_health_pickup(spawn_pos):
 	var pickup_inst = health_pickup_scene.instantiate()
 	pickup_inst.global_position = spawn_pos
 	pickups_container.call_deferred("add_child", pickup_inst)
+
+func _on_enemy_died(score_amount):
+	score += score_amount
+	hud.set_score_label(score)
 
 func _on_player_died():
 	lose_screen.show()
