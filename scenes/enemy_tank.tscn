@@ -16,7 +16,7 @@ script = ExtResource("2_n8et2")
 projectile_scene = ExtResource("3_e42iy")
 attack_range = 250.0
 attack_damage = 20.0
-spawn_pickup_chance = 25
+spawn_pickup_chance = 15
 move_speed = 150
 
 [node name="Hitbox" type="CollisionShape2D" parent="." index="0"]
