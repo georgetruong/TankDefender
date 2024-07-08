@@ -2,6 +2,8 @@ extends Unit
 
 class_name Player
 
+signal player_died
+
 var target_position = null
 
 @onready var target_line = $TargetLine
@@ -50,6 +52,7 @@ func _physics_process(delta):
 func die():
 	super.die()
 	can_attack = false
+	player_died.emit()
 
 ############################################################################################################################
 # Movement Target Line

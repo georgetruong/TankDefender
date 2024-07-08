@@ -11,6 +11,7 @@ var health_pickup_scene = preload("res://scenes/health_pickup.tscn")
 
 @onready var ui_layer = $UILayer
 @onready var hud = $UILayer/HUD
+@onready var lose_screen = $UILayer/LoseScreen
 
 @export var wave_time = 30
 @export var initial_wave_size: int = 1
@@ -92,3 +93,8 @@ func _on_spawned_health_pickup(spawn_pos):
 	var pickup_inst = health_pickup_scene.instantiate()
 	pickup_inst.global_position = spawn_pos
 	pickups_container.call_deferred("add_child", pickup_inst)
+
+
+func _on_player_died():
+	lose_screen.show()
+	wave_timer.stop()
