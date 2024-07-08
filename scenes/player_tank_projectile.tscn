@@ -4,5 +4,9 @@
 
 [node name="PlayerTankProjectile" instance=ExtResource("1_54q77")]
 
+[node name="Hitbox" parent="." index="0"]
+scale = Vector2(0.5, 0.5)
+
 [node name="TilesheetSprite" parent="." index="1"]
+scale = Vector2(0.5, 0.5)
 region_rect = Rect2(554, 585, 16, 32)

@@ -3,3 +3,9 @@
 [ext_resource type="PackedScene" uid="uid://5nfgkuwopp6a" path="res://scenes/projectile_base.tscn" id="1_7l4ql"]
 
 [node name="EnemyTankProjectile" instance=ExtResource("1_7l4ql")]
+
+[node name="Hitbox" parent="." index="0"]
+scale = Vector2(0.5, 0.5)
+
+[node name="TilesheetSprite" parent="." index="1"]
+scale = Vector2(0.5, 0.5)
