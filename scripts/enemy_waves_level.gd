@@ -3,7 +3,7 @@ extends Node2D
 @onready var enemy_container = $EnemyContainer
 @onready var enemy_spawn_positions = $EnemySpawnPositions
 
-@export var enemy_scene: PackedScene 
+@export var tank_scene: PackedScene 
 @export var soldier_scene: PackedScene 
 
 var health_pickup_scene = preload("res://scenes/health_pickup.tscn")
@@ -28,9 +28,6 @@ func _process(delta):
 		spawn_wave()
 	update_hud()
 
-func _on_enemy_died():
-	pass
-
 func init_wave_timer():
 	wave_time_left = wave_time
 	hud.set_time_label(wave_time_left)
@@ -42,25 +39,19 @@ func init_wave_timer():
 	add_child(wave_timer)
 	wave_timer.start()
 
-func spawn_tank():
+func spawn_enemy(_type = "soldier"):
 	var spawn_positions_array = enemy_spawn_positions.get_children()
 	var random_spawn_position = spawn_positions_array.pick_random() 
 	var offset = Vector2(randf_range(-25, 25), randf_range(-25, 25))
 
-	var enemy_instance = enemy_scene.instantiate()
-	enemy_instance.global_position = random_spawn_position.global_position + offset
-	enemy_instance.connect("spawned_health_pickup", _on_spawned_health_pickup)
-	enemy_container.add_child(enemy_instance)
-
-func spawn_soldier():
-	var spawn_positions_array = enemy_spawn_positions.get_children()
-	var random_spawn_position = spawn_positions_array.pick_random() 
-	var offset = Vector2(randf_range(-25, 25), randf_range(-25, 25))
-
-	var soldier_instance = soldier_scene.instantiate()
-	soldier_instance.global_position = random_spawn_position.global_position + offset
-	soldier_instance.connect("spawned_health_pickup", _on_spawned_health_pickup)
-	enemy_container.add_child(soldier_instance)
+	var enemy_inst
+	if _type == "soldier":
+		enemy_inst = soldier_scene.instantiate()
+	elif _type == "tank":
+		enemy_inst = tank_scene.instantiate()
+	enemy_inst.global_position = random_spawn_position.global_position + offset
+	enemy_inst.connect("spawned_health_pickup", _on_spawned_health_pickup)
+	enemy_container.add_child(enemy_inst)
 
 func spawn_wave():
 	wave_counter += 1
@@ -69,11 +60,11 @@ func spawn_wave():
 
 	var num_soldiers = int(wave_counter / 5) * 2 + 3
 	for i in num_soldiers:
-		spawn_soldier()
+		spawn_enemy("soldier")
 
 	var num_tanks = int(wave_counter / 5)
 	for i in num_tanks:
-		spawn_tank()
+		spawn_enemy("tank")
 	
 func _on_wave_timeout():
 	wave_time_left -= 1
@@ -93,7 +84,6 @@ func _on_spawned_health_pickup(spawn_pos):
 	var pickup_inst = health_pickup_scene.instantiate()
 	pickup_inst.global_position = spawn_pos
 	pickups_container.call_deferred("add_child", pickup_inst)
-
 
 func _on_player_died():
 	lose_screen.show()
