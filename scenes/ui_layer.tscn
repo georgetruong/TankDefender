@@ -1,11 +1,11 @@
 [gd_scene load_steps=3 format=3 uid="uid://dofdw111btiwn"]
 
 [ext_resource type="PackedScene" uid="uid://chtxphosmime" path="res://scenes/hud.tscn" id="1_5ajq0"]
-[ext_resource type="PackedScene" uid="uid://d27fu1cnkta4i" path="res://scenes/lose_screen.tscn" id="2_y21an"]
+[ext_resource type="PackedScene" uid="uid://d27fu1cnkta4i" path="res://scenes/game_over_screen.tscn" id="2_tkgvw"]
 
 [node name="UILayer" type="CanvasLayer"]
 
 [node name="HUD" parent="." instance=ExtResource("1_5ajq0")]
 
-[node name="LoseScreen" parent="." instance=ExtResource("2_y21an")]
+[node name="GameOverScreen" parent="." instance=ExtResource("2_tkgvw")]
 visible = false

@@ -11,7 +11,7 @@ var health_pickup_scene = preload("res://scenes/health_pickup.tscn")
 
 @onready var ui_layer = $UILayer
 @onready var hud = $UILayer/HUD
-@onready var lose_screen = $UILayer/LoseScreen
+@onready var game_over_screen = $UILayer/GameOverScreen
 
 @export var wave_time = 30
 @export var initial_wave_size: int = 1
@@ -95,5 +95,8 @@ func _on_enemy_died(score_amount):
 	hud.set_score_label(score)
 
 func _on_player_died():
-	lose_screen.show()
 	wave_timer.stop()
+	hud.hide()
+	game_over_screen.set_score_label(score)
+	game_over_screen.set_wave_label(wave_counter)
+	game_over_screen.show()
