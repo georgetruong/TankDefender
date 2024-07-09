@@ -21,6 +21,8 @@ var wave_time_left
 
 var score = 0
 
+@onready var player_camera = $Camera2D
+
 func _ready():
 	score = 0
 	init_wave_timer()
@@ -100,3 +102,8 @@ func _on_player_died():
 	game_over_screen.set_score_label(score)
 	game_over_screen.set_wave_label(wave_counter)
 	game_over_screen.show()
+
+
+func _on_player_hit(damage: float):
+	var intensity = (damage / 20) * 5
+	player_camera.shake(intensity, 0.3)

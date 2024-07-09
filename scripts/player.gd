@@ -3,6 +3,7 @@ extends Unit
 class_name Player
 
 signal player_died
+signal player_hit(damage: float)
 
 var target_position = null
 
@@ -110,6 +111,10 @@ func attack(pos: Vector2):
 	shell_inst.set_collision_layer(Globals.PhysicsLayers["player_projectiles"])
 
 	get_tree().root.add_child(shell_inst)
+
+func damage(_amount: float):
+	super.damage(_amount)
+	player_hit.emit(_amount)
 
 ############################################################################################################################
 # Pickups
