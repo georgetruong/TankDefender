@@ -51,7 +51,6 @@ position = Vector2(-52, 1082)
 position = Vector2(964, 509)
 motion_mode = 0
 wall_min_slide_angle = 0.261799
-projectile_spawn_distance = 50
 
 [node name="HealthBarsLayer" type="CanvasLayer" parent="."]
 
