@@ -12,6 +12,7 @@ var health_pickup_scene = preload("res://scenes/health_pickup.tscn")
 @onready var ui_layer = $UILayer
 @onready var hud = $UILayer/HUD
 @onready var game_over_screen = $UILayer/GameOverScreen
+@onready var menu_screen = $UILayer/MenuScreen
 
 @export var wave_time = 30
 @export var initial_wave_size: int = 1
@@ -32,6 +33,19 @@ func _process(delta):
 	if enemies_left() == 0:
 		spawn_wave()
 	update_hud()
+
+	if Input.is_action_just_pressed("menu"):
+		toggle_show_menu(true)
+
+func toggle_show_menu(_show_flag: bool):
+	if _show_flag:
+		hud.hide()
+		get_tree().paused = true
+		menu_screen.show()
+	else:
+		hud.show()
+		get_tree().paused = false
+		menu_screen.hide()
 
 func init_wave_timer():
 	wave_time_left = wave_time

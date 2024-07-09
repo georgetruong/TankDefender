@@ -1,0 +1,264 @@
+[gd_scene load_steps=4 format=3 uid="uid://bbvkdndmhpefm"]
+
+[ext_resource type="FontFile" uid="uid://8y0f1qfb7kyo" path="res://assets/fonts/Kenney Pixel Square.ttf" id="1_u02l0"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_q05sq"]
+font = ExtResource("1_u02l0")
+font_size = 32
+outline_size = 5
+outline_color = Color(0, 0, 0, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_11snk"]
+font = ExtResource("1_u02l0")
+font_size = 64
+
+[node name="MenuScreen" type="Control"]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="ColorRect" type="ColorRect" parent="."]
+offset_right = 1920.0
+offset_bottom = 1080.0
+color = Color(0, 0, 0, 0.25098)
+
+[node name="RestartButton" type="Button" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 994.0
+offset_top = 935.0
+offset_right = 1414.0
+offset_bottom = 1015.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_fonts/font = ExtResource("1_u02l0")
+theme_override_font_sizes/font_size = 48
+text = "RESTART"
+
+[node name="RestartButton2" type="Button" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 66.0
+offset_top = 935.0
+offset_right = 486.0
+offset_bottom = 1015.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_fonts/font = ExtResource("1_u02l0")
+theme_override_font_sizes/font_size = 48
+text = "RETURN TO GAME"
+
+[node name="QuitButton" type="Button" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 1439.0
+offset_top = 935.0
+offset_right = 1859.0
+offset_bottom = 1015.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_fonts/font = ExtResource("1_u02l0")
+theme_override_font_sizes/font_size = 48
+text = "EXIT"
+
+[node name="Node2D" type="Node2D" parent="."]
+position = Vector2(2, 167)
+
+[node name="ControlsLabel11" type="Label" parent="Node2D"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 64.0
+offset_top = 271.0
+offset_right = 414.0
+offset_bottom = 319.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "Move Forward:
+"
+label_settings = SubResource("LabelSettings_q05sq")
+vertical_alignment = 1
+
+[node name="ControlsLabel" type="Label" parent="Node2D"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 64.0
+offset_top = 131.0
+offset_right = 440.0
+offset_bottom = 227.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "CONTROLS"
+label_settings = SubResource("LabelSettings_11snk")
+vertical_alignment = 1
+
+[node name="ControlsLabel2" type="Label" parent="Node2D"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 64.0
+offset_top = 329.0
+offset_right = 414.0
+offset_bottom = 377.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "Move Backward:
+"
+label_settings = SubResource("LabelSettings_q05sq")
+vertical_alignment = 1
+
+[node name="ControlsLabel3" type="Label" parent="Node2D"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 64.0
+offset_top = 388.0
+offset_right = 414.0
+offset_bottom = 436.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "ROTATE LEFT:
+"
+label_settings = SubResource("LabelSettings_q05sq")
+vertical_alignment = 1
+
+[node name="ControlsLabel4" type="Label" parent="Node2D"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 64.0
+offset_top = 444.0
+offset_right = 414.0
+offset_bottom = 492.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "ROTATE RIGHT:
+"
+label_settings = SubResource("LabelSettings_q05sq")
+vertical_alignment = 1
+
+[node name="ControlsLabel5" type="Label" parent="Node2D"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 444.0
+offset_top = 271.0
+offset_right = 544.0
+offset_bottom = 319.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "W
+"
+label_settings = SubResource("LabelSettings_q05sq")
+vertical_alignment = 1
+
+[node name="ControlsLabel6" type="Label" parent="Node2D"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 444.0
+offset_top = 329.0
+offset_right = 544.0
+offset_bottom = 377.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "S
+"
+label_settings = SubResource("LabelSettings_q05sq")
+vertical_alignment = 1
+
+[node name="ControlsLabel7" type="Label" parent="Node2D"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 444.0
+offset_top = 388.0
+offset_right = 544.0
+offset_bottom = 436.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "A
+"
+label_settings = SubResource("LabelSettings_q05sq")
+vertical_alignment = 1
+
+[node name="ControlsLabel8" type="Label" parent="Node2D"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 444.0
+offset_top = 444.0
+offset_right = 544.0
+offset_bottom = 492.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "D
+"
+label_settings = SubResource("LabelSettings_q05sq")
+vertical_alignment = 1
+
+[node name="ControlsLabel9" type="Label" parent="Node2D"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 64.0
+offset_top = 502.0
+offset_right = 414.0
+offset_bottom = 550.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "ATTACK
+"
+label_settings = SubResource("LabelSettings_q05sq")
+vertical_alignment = 1
+
+[node name="ControlsLabel10" type="Label" parent="Node2D"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 444.0
+offset_top = 502.0
+offset_right = 672.0
+offset_bottom = 550.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "LEFT MOUSE
+"
+label_settings = SubResource("LabelSettings_q05sq")
+vertical_alignment = 1
