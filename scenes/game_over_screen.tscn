@@ -1,0 +1,100 @@
+[gd_scene load_steps=5 format=3 uid="uid://d27fu1cnkta4i"]
+
+[ext_resource type="Script" path="res://scripts/game_over_screen.gd" id="1_5rcqg"]
+[ext_resource type="FontFile" uid="uid://8y0f1qfb7kyo" path="res://assets/fonts/Kenney Pixel Square.ttf" id="1_8s0l3"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_uuy05"]
+font = ExtResource("1_8s0l3")
+font_size = 128
+outline_size = 25
+outline_color = Color(0, 0, 0, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_iulyi"]
+font = ExtResource("1_8s0l3")
+font_size = 32
+outline_size = 5
+outline_color = Color(0, 0, 0, 1)
+
+[node name="GameOverScreen" type="Control"]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 1920.0
+offset_bottom = 1080.0
+script = ExtResource("1_5rcqg")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+layout_mode = 0
+offset_right = 1920.0
+offset_bottom = 1080.0
+color = Color(0, 0, 0, 0.25098)
+
+[node name="GameOverLabel" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -360.0
+offset_top = -290.0
+offset_right = 360.0
+offset_bottom = -98.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "GAME OVER"
+label_settings = SubResource("LabelSettings_uuy05")
+
+[node name="RestartButton" type="Button" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -166.0
+offset_top = 130.0
+offset_right = 166.0
+offset_bottom = 210.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_fonts/font = ExtResource("1_8s0l3")
+theme_override_font_sizes/font_size = 48
+text = "TRY AGAIN..."
+
+[node name="ScoreLabel" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -210.0
+offset_top = -24.0
+offset_right = 210.0
+offset_bottom = 24.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "SCORE: 999999"
+label_settings = SubResource("LabelSettings_iulyi")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="WaveLabel" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -210.0
+offset_top = 30.0
+offset_right = 210.0
+offset_bottom = 78.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "WAVE: 99"
+label_settings = SubResource("LabelSettings_iulyi")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[connection signal="pressed" from="RestartButton" to="." method="_on_restart_button_pressed"]

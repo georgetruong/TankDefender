@@ -10,6 +10,7 @@ var player = null
 
 @export_group("Attacks")
 @export var projectile_scene: PackedScene = preload("res://scenes/enemy_tank_projectile.tscn")
+@export var projectile_spawn_distance: int = 50
 @export var attack_range: float = 500.0
 @export var attack_damage: float = 25.0
 
@@ -63,7 +64,7 @@ func attack(pos: Vector2):
 	var shell_inst = projectile_scene.instantiate()
 	var direction = (pos - global_position).normalized()
 
-	shell_inst.global_position = global_position + direction * 100
+	shell_inst.global_position = global_position + direction * projectile_spawn_distance
 	shell_inst.linear_velocity = direction * shell_inst.speed
 	shell_inst.rotation = direction.angle()
 	shell_inst.damage = attack_damage
