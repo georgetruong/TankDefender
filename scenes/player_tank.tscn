@@ -29,3 +29,6 @@ region_rect = Rect2(2048, 1408, 128, 128)
 texture = ExtResource("3_4vmpk")
 region_enabled = true
 region_rect = Rect2(2048, 1536, 128, 128)
+
+[node name="HealthComponent" parent="." index="5"]
+MAX_HEALTH = 150.0

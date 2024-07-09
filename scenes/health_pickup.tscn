@@ -4,7 +4,7 @@
 [ext_resource type="Script" path="res://scripts/health_pickup.gd" id="1_3ldu3"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_rpial"]
-radius = 33.0
+radius = 35.0
 
 [node name="HealthPickup" type="Area2D"]
 collision_layer = 32
@@ -15,7 +15,7 @@ heal_amount = 50.0
 [node name="TilesheetSprite" parent="." instance=ExtResource("1_3db8j")]
 modulate = Color(1, 0, 0, 1)
 scale = Vector2(0.5, 0.5)
-region_rect = Rect2(1664, 1536, 128, 128)
+region_rect = Rect2(1664, 1537, 128, 128)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(0, 2)

@@ -4,7 +4,17 @@
 [ext_resource type="PackedScene" uid="uid://bqlp08elp3jey" path="res://scenes/health_bar.tscn" id="2_uwif8"]
 
 [node name="HealthComponent" type="Node2D"]
+scale = Vector2(0.5, 0.5)
 script = ExtResource("1_jj7y8")
 
 [node name="HealthBar" parent="." instance=ExtResource("2_uwif8")]
+visible = false
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -66.0
+offset_top = -64.0
+offset_right = -61.0
+offset_bottom = -54.0
+grow_horizontal = 2
 metadata/_edit_use_anchors_ = true
