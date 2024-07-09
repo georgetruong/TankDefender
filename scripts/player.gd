@@ -9,6 +9,9 @@ var target_position = null
 
 @onready var target_line = $TargetLine
 @onready var turret = $TurretSprite
+@onready var muzzle_flash = $TurretSprite/MuzzleFlashSprite
+@onready var muzzle_flash_timer = $MuzzleFlashTimer
+@export var muzzle_flash_delay: float = 0.2
 
 var shell_scene = preload("res://scenes/player_tank_projectile.tscn")
 @export var projectile_spawn_distance: int = 50
@@ -22,6 +25,8 @@ func _ready():
 	team = Globals.Team.PLAYER
 	# if show_movement_line:
 	# 	setup_target_line()
+
+	muzzle_flash_timer.timeout.connect(_on_muzzle_flash_timeout)
 
 func _process(delta):
 	super._process(delta)
@@ -56,11 +61,9 @@ func _on_attack_delay_timer():
 
 func attack(pos: Vector2):
 	# TODO:
-	#	- Fire from turret muzzle
 	#	- Add fire VFX
 	#	- Play sound
 
-	# TODO: Refactor into Unit
 	var shell_inst = shell_scene.instantiate()
 	var direction = (pos - global_position).normalized()
 
@@ -72,6 +75,14 @@ func attack(pos: Vector2):
 	shell_inst.set_collision_layer(Globals.PhysicsLayers["player_projectiles"])
 
 	get_tree().root.add_child(shell_inst)
+	show_muzzle_flash()
+
+func show_muzzle_flash():
+	muzzle_flash.show()
+	muzzle_flash_timer.start(muzzle_flash_delay)
+	
+func _on_muzzle_flash_timeout():
+	muzzle_flash.hide()
 
 func damage(_amount: float):
 	super.damage(_amount)
@@ -103,7 +114,6 @@ func pickup_health(_heal_amount: float):
 # 	if event is InputEventMouseButton and event.button_index == MOUSE_BUTTON_RIGHT and event.pressed:
 # 		target_position = get_global_mouse_position()
 # 	elif is_input_left_click(event) and can_attack: 
-# 		# TODO: hold down button to continuously attack
 # 		attack(get_global_mouse_position())
 # 		can_attack = false
 # 		attack_delay_timer.start(attack_delay)

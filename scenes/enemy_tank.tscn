@@ -1,7 +1,7 @@
 [gd_scene load_steps=6 format=3 uid="uid://bairbkgtfa6h2"]
 
 [ext_resource type="PackedScene" uid="uid://di5rl8qlxctbd" path="res://scenes/unit.tscn" id="1_ohp17"]
-[ext_resource type="Script" path="res://scripts/enemy_unit.gd" id="2_n8et2"]
+[ext_resource type="Script" path="res://scripts/enemy_tank.gd" id="2_kohwm"]
 [ext_resource type="PackedScene" uid="uid://crjopdu72duh2" path="res://scenes/enemy_tank_projectile.tscn" id="3_e42iy"]
 [ext_resource type="PackedScene" uid="uid://h57e5o142ttl" path="res://scenes/tilesheet_sprite.tscn" id="3_s3fwf"]
 
@@ -12,7 +12,8 @@ radius = 61.3055
 scale = Vector2(0.5, 0.5)
 collision_layer = 8
 collision_mask = 15
-script = ExtResource("2_n8et2")
+script = ExtResource("2_kohwm")
+muzzle_flash_delay = 0.2
 score_amount = 1000
 projectile_scene = ExtResource("3_e42iy")
 projectile_spawn_distance = 100
@@ -28,5 +29,13 @@ shape = SubResource("CircleShape2D_6e1hh")
 [node name="TurretSprite" parent="." index="3" groups=["enemy"] instance=ExtResource("3_s3fwf")]
 region_rect = Rect2(1928, 1536, 128, 128)
 
+[node name="MuzzleFlashSprite" parent="TurretSprite" index="0" instance=ExtResource("3_s3fwf")]
+visible = false
+position = Vector2(92, -4)
+rotation = 1.5708
+region_rect = Rect2(2816, 1536, 128, 128)
+
 [node name="NavigationAgent2D" parent="." index="8"]
 debug_enabled = false
+
+[node name="MuzzleFlashTimer" type="Timer" parent="." index="10"]
