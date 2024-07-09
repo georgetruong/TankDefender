@@ -25,8 +25,10 @@ var score = 0
 
 @onready var player_camera = $Camera2D
 
+
 func _ready():
 	menu_screen_instance.hide()
+	capture_mouse()	
 
 	score = 0
 	init_wave_timer()
@@ -40,6 +42,22 @@ func _process(delta):
 	if Input.is_action_just_pressed("menu"):
 		toggle_show_menu()
 
+
+############################################################################################################################
+# MOUSE INPUT
+#
+############################################################################################################################
+func capture_mouse():
+	Input.mouse_mode = Input.MOUSE_MODE_CONFINED
+
+func release_mouse():
+	Input.mouse_mode = Input.MOUSE_MODE_VISIBLE
+
+
+############################################################################################################################
+# PAUSE MENU
+#
+############################################################################################################################
 func _on_close_menu_screen():
 	toggle_show_menu()
 
@@ -48,10 +66,17 @@ func toggle_show_menu():
 	if get_tree().paused:
 		hud.hide()
 		menu_screen_instance.show()
+		release_mouse()
 	else:
 		hud.show()
 		menu_screen_instance.hide()
+		capture_mouse()
 
+
+############################################################################################################################
+# SPAWN ENEMY WAVES
+#
+############################################################################################################################
 func init_wave_timer():
 	wave_time_left = wave_time
 	hud.set_time_label(wave_time_left)
@@ -97,6 +122,11 @@ func _on_wave_timeout():
 		spawn_wave()
 		update_hud()
 
+
+############################################################################################################################
+# HUD
+#
+############################################################################################################################
 func enemies_left() -> int:
 	return enemy_container.get_children().size()
 
@@ -106,6 +136,11 @@ func update_hud():
 	hud.set_enemies_left_label(enemies_left())
 	hud.set_time_label(wave_time_left)
 
+
+############################################################################################################################
+# Game event signals
+#
+############################################################################################################################
 func _on_spawned_health_pickup(spawn_pos):
 	var pickup_inst = health_pickup_scene.instantiate()
 	pickup_inst.global_position = spawn_pos
@@ -121,7 +156,6 @@ func _on_player_died():
 	game_over_screen.set_score_label(score)
 	game_over_screen.set_wave_label(wave_counter)
 	game_over_screen.show()
-
 
 func _on_player_hit(damage: float):
 	var intensity = (damage / 20) * 5
