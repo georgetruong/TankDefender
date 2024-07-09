@@ -14,6 +14,7 @@ font = ExtResource("1_u02l0")
 font_size = 64
 
 [node name="MenuScreen" type="Control"]
+top_level = true
 layout_mode = 3
 anchors_preset = 0
 offset_right = 40.0
@@ -21,6 +22,7 @@ offset_bottom = 40.0
 script = ExtResource("1_unq0s")
 
 [node name="ColorRect" type="ColorRect" parent="."]
+layout_mode = 0
 offset_right = 1920.0
 offset_bottom = 1080.0
 color = Color(0, 0, 0, 0.501961)
@@ -42,7 +44,7 @@ theme_override_fonts/font = ExtResource("1_u02l0")
 theme_override_font_sizes/font_size = 48
 text = "RESTART"
 
-[node name="RestartButton2" type="Button" parent="."]
+[node name="ResumeButton" type="Button" parent="."]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -51,13 +53,13 @@ anchor_right = 0.5
 anchor_bottom = 0.5
 offset_left = 66.0
 offset_top = 935.0
-offset_right = 486.0
+offset_right = 553.0
 offset_bottom = 1015.0
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_fonts/font = ExtResource("1_u02l0")
 theme_override_font_sizes/font_size = 48
-text = "RETURN TO GAME"
+text = "RESUME GAME"
 
 [node name="QuitButton" type="Button" parent="."]
 layout_mode = 1
@@ -266,4 +268,5 @@ label_settings = SubResource("LabelSettings_q05sq")
 vertical_alignment = 1
 
 [connection signal="pressed" from="RestartButton" to="." method="_on_restart_button_pressed"]
+[connection signal="pressed" from="ResumeButton" to="." method="_on_resume_button_pressed"]
 [connection signal="pressed" from="QuitButton" to="." method="_on_quit_button_pressed"]

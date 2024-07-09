@@ -12,7 +12,8 @@ var health_pickup_scene = preload("res://scenes/health_pickup.tscn")
 @onready var ui_layer = $UILayer
 @onready var hud = $UILayer/HUD
 @onready var game_over_screen = $UILayer/GameOverScreen
-@onready var menu_screen = $UILayer/MenuScreen
+
+@onready var menu_screen_instance = $UILayer/PauseMenuScreen
 
 @export var wave_time = 30
 @export var initial_wave_size: int = 1
@@ -25,6 +26,8 @@ var score = 0
 @onready var player_camera = $Camera2D
 
 func _ready():
+	menu_screen_instance.hide()
+
 	score = 0
 	init_wave_timer()
 	spawn_wave()
@@ -35,17 +38,19 @@ func _process(delta):
 	update_hud()
 
 	if Input.is_action_just_pressed("menu"):
-		toggle_show_menu(true)
+		toggle_show_menu()
 
-func toggle_show_menu(_show_flag: bool):
-	if _show_flag:
+func _on_close_menu_screen():
+	toggle_show_menu()
+
+func toggle_show_menu():
+	get_tree().paused = not get_tree().paused
+	if get_tree().paused:
 		hud.hide()
-		get_tree().paused = true
-		menu_screen.show()
+		menu_screen_instance.show()
 	else:
 		hud.show()
-		get_tree().paused = false
-		menu_screen.hide()
+		menu_screen_instance.hide()
 
 func init_wave_timer():
 	wave_time_left = wave_time
