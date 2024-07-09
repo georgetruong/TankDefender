@@ -19,7 +19,7 @@ projectile_spawn_distance = 100
 attack_range = 250.0
 attack_damage = 20.0
 spawn_pickup_chance = 10
-move_speed = 150
+move_speed = 125
 
 [node name="Hitbox" type="CollisionShape2D" parent="." index="0"]
 position = Vector2(0.727158, 0)
