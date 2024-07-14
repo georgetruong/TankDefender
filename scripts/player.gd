@@ -60,9 +60,7 @@ func _on_attack_delay_timer():
 	can_attack = true
 
 func attack(pos: Vector2):
-	# TODO:
-	#	- Add fire VFX
-	#	- Play sound
+	super.attack(pos)
 
 	var shell_inst = shell_scene.instantiate()
 	var direction = (pos - global_position).normalized()
@@ -91,6 +89,7 @@ func damage(_amount: float):
 func die():
 	super.die()
 	can_attack = false
+	AudioManager.play_sfx("player_death")
 	player_died.emit()
 
 
@@ -100,6 +99,7 @@ func die():
 ############################################################################################################################
 func pickup_health(_heal_amount: float):
 	if health_component:
+		AudioManager.play_sfx("pickup")
 		health_component.heal(_heal_amount)
 
 

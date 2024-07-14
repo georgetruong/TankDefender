@@ -24,6 +24,7 @@ func _on_body_entered(body:Node):
 		linear_velocity = Vector2.ZERO
 		queue_free()
 	if body is Unit:
+		AudioManager.play_sfx("explosion")
 		body.damage(damage)
 		linear_velocity = Vector2.ZERO
 		queue_free()

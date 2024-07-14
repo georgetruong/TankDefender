@@ -1,0 +1,11 @@
+[gd_scene load_steps=3 format=3 uid="uid://dayyuq6n56cgc"]
+
+[ext_resource type="Script" path="res://scripts/audio_manager.gd" id="1_028fq"]
+[ext_resource type="AudioStream" uid="uid://dqagsmop1ek5u" path="res://assets/audio/music/Space Cadet.ogg" id="2_20pe6"]
+
+[node name="AudioManager" type="Node"]
+script = ExtResource("1_028fq")
+
+[node name="MusicPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("2_20pe6")
+autoplay = true

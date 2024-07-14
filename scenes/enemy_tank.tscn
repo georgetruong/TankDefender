@@ -16,7 +16,7 @@ script = ExtResource("2_kohwm")
 muzzle_flash_delay = 0.2
 score_amount = 1000
 projectile_scene = ExtResource("3_e42iy")
-projectile_spawn_distance = 100
+projectile_spawn_distance = 50
 attack_range = 250.0
 attack_damage = 20.0
 spawn_pickup_chance = 10
@@ -31,6 +31,7 @@ region_rect = Rect2(1928, 1536, 128, 128)
 
 [node name="MuzzleFlashSprite" parent="TurretSprite" index="0" instance=ExtResource("3_s3fwf")]
 visible = false
+z_index = 10
 position = Vector2(92, -4)
 rotation = 1.5708
 region_rect = Rect2(2816, 1536, 128, 128)

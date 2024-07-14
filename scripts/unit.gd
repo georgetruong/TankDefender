@@ -28,12 +28,14 @@ func _process(delta):
 	pass
 
 func attack(pos: Vector2):
+	AudioManager.play_sfx("attack")
 	pass
 
 func damage(_amount: float):
 	health_component.damage(_amount)
 
 func die():
+	#AudioManager.play_sfx("death")
 	can_attack = false
 
 	if health_component:

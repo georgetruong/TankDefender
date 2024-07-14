@@ -34,6 +34,7 @@ region_rect = Rect2(2048, 1536, 128, 128)
 
 [node name="MuzzleFlashSprite" parent="TurretSprite" index="0" instance=ExtResource("4_7x2au")]
 visible = false
+z_index = 10
 position = Vector2(92, -4)
 rotation = 1.5708
 region_rect = Rect2(2816, 1536, 128, 128)
