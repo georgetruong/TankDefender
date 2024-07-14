@@ -30,7 +30,6 @@ func show_health_bar():
 func hide_health_bar():
 	health_bar.hide()
 
-#func damage(attack: Attack): # TODO: Pull out attacks to its own class
 func damage(amount: float):
 	health -= amount
 	health = max(health, 0)

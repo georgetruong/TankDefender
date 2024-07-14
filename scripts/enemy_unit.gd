@@ -28,10 +28,6 @@ func _physics_process(delta: float) -> void:
 	if !player:
 		return
 
-	# TODO: Fix turrets for tanks
-	#if turret_sprite != null:
-	#	turret_sprite.look_at(player.global_position)
-
 	if has_line_of_sight() and is_in_attack_range() and can_attack:
 		attack(player.global_position)
 		can_attack = false
