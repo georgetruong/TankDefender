@@ -16,7 +16,7 @@ func _on_restart_button_pressed():
 
 func _on_quit_button_pressed():
 	get_tree().paused = false
-	get_tree().quit()
+	get_tree().change_scene_to_file("res://scenes/start_screen.tscn")
 
 func _on_resume_button_pressed():
 	close_menu_screen.emit()

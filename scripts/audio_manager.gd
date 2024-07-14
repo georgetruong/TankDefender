@@ -2,8 +2,8 @@ extends Node
 
 var mute_all = false
 
-var music_vol_db = -6
-var sfx_vol_db = -6
+var music_vol_db = -5
+var sfx_vol_db = -5
 var old_music_vol_db = music_vol_db
 var old_sfx_vol_db = sfx_vol_db
 
