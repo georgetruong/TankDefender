@@ -2,9 +2,10 @@ extends Node
 
 var mute_all = false
 
-var master_vol_db = 0
-var music_vol_db = 0
-var sfx_vol_db = 0
+var music_vol_db = -6
+var sfx_vol_db = -6
+var old_music_vol_db = music_vol_db
+var old_sfx_vol_db = sfx_vol_db
 
 var sfx_attack = preload("res://assets/audio/impactMetal_000.ogg")
 var sfx_explosion  = preload("res://assets/audio/explosion2.ogg")
@@ -33,6 +34,7 @@ func play_sfx(sfx_name: String):
 		return
 	
 	var asp = AudioStreamPlayer.new()
+	asp.volume_db = sfx_vol_db
 	asp.name = "SFX"
 	asp.stream = stream
 	asp.pitch_scale = randf_range(0.8, 1.1)
@@ -44,17 +46,29 @@ func play_sfx(sfx_name: String):
 func play_music(stream):
 	if stream:
 		$MusicPlayer.stop()
-		$MusicPlayer.volume_db = master_vol_db
+		$MusicPlayer.volume_db = music_vol_db
 		$MusicPlayer.stream = stream
 		$MusicPlayer.play()
 	else:
 		print_debug("Invalid music file")
 
-
-func toggle_mute():
-	mute_all = not mute_all
+func toggle_mute(_flag: bool):
+	mute_all = _flag
 	if mute_all:
-		$AudioManager.master_vol_db = -80
+		print("MUTE")
+		old_music_vol_db = music_vol_db
+		old_sfx_vol_db = sfx_vol_db
+		music_vol_db = -40
+		sfx_vol_db = -40
 	else:
-		$AudioManager.master_vol_db = 0
+		print("UNMUTE")
+		music_vol_db = old_music_vol_db
+		sfx_vol_db = old_sfx_vol_db
+	$MusicPlayer.volume_db = music_vol_db
 
+func change_music_volume(_value: float):
+	music_vol_db = _value
+	$MusicPlayer.volume_db = music_vol_db
+
+func change_sfx_volume(_value: float):
+	sfx_vol_db = _value

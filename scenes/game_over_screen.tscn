@@ -1,7 +1,10 @@
-[gd_scene load_steps=5 format=3 uid="uid://d27fu1cnkta4i"]
+[gd_scene load_steps=8 format=3 uid="uid://d27fu1cnkta4i"]
 
 [ext_resource type="Script" path="res://scripts/game_over_screen.gd" id="1_5rcqg"]
 [ext_resource type="FontFile" uid="uid://8y0f1qfb7kyo" path="res://assets/fonts/Kenney Pixel Square.ttf" id="1_8s0l3"]
+[ext_resource type="Texture2D" uid="uid://bvqvjtrkk3hn5" path="res://assets/UI Base Pack/PNG/Yellow/Double/button_rectangle_depth_gloss.png" id="3_pxua0"]
+[ext_resource type="FontFile" uid="uid://c8utve888hy41" path="res://assets/UI Base Pack/Font/Kenney Future.ttf" id="4_ubt3a"]
+[ext_resource type="Texture2D" uid="uid://b8l1bwfjrb6c3" path="res://assets/UI Base Pack/PNG/Red/Double/button_rectangle_gloss.png" id="5_r85b8"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_uuy05"]
 font = ExtResource("1_8s0l3")
@@ -44,40 +47,6 @@ grow_vertical = 2
 text = "GAME OVER"
 label_settings = SubResource("LabelSettings_uuy05")
 
-[node name="RestartButton" type="Button" parent="."]
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -447.0
-offset_top = 184.0
-offset_right = -27.0
-offset_bottom = 264.0
-grow_horizontal = 2
-grow_vertical = 2
-theme_override_fonts/font = ExtResource("1_8s0l3")
-theme_override_font_sizes/font_size = 48
-text = "TRY AGAIN"
-
-[node name="QuitButton" type="Button" parent="."]
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = 30.0
-offset_top = 184.0
-offset_right = 450.0
-offset_bottom = 264.0
-grow_horizontal = 2
-grow_vertical = 2
-theme_override_fonts/font = ExtResource("1_8s0l3")
-theme_override_font_sizes/font_size = 48
-text = "EXIT"
-
 [node name="ScoreLabel" type="Label" parent="."]
 layout_mode = 1
 anchors_preset = 8
@@ -114,5 +83,42 @@ label_settings = SubResource("LabelSettings_iulyi")
 horizontal_alignment = 1
 vertical_alignment = 1
 
+[node name="RestartButton" type="TextureButton" parent="."]
+offset_left = 522.0
+offset_top = 744.0
+offset_right = 906.0
+offset_bottom = 872.0
+texture_normal = ExtResource("3_pxua0")
+stretch_mode = 0
+
+[node name="Label" type="Label" parent="RestartButton"]
+layout_mode = 0
+offset_right = 380.0
+offset_bottom = 121.0
+theme_override_fonts/font = ExtResource("4_ubt3a")
+theme_override_font_sizes/font_size = 48
+text = "RESTART"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="ExitButton" type="TextureButton" parent="."]
+offset_left = 1043.0
+offset_top = 744.0
+offset_right = 1427.0
+offset_bottom = 872.0
+texture_normal = ExtResource("5_r85b8")
+stretch_mode = 0
+
+[node name="Label" type="Label" parent="ExitButton"]
+layout_mode = 0
+offset_left = 5.0
+offset_right = 385.0
+offset_bottom = 121.0
+theme_override_fonts/font = ExtResource("4_ubt3a")
+theme_override_font_sizes/font_size = 48
+text = "EXIT"
+horizontal_alignment = 1
+vertical_alignment = 1
+
 [connection signal="pressed" from="RestartButton" to="." method="_on_restart_button_pressed"]
-[connection signal="pressed" from="QuitButton" to="." method="_on_quit_button_pressed"]
+[connection signal="pressed" from="ExitButton" to="." method="_on_quit_button_pressed"]

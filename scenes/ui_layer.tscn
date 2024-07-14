@@ -1,9 +1,8 @@
-[gd_scene load_steps=5 format=3 uid="uid://dofdw111btiwn"]
+[gd_scene load_steps=4 format=3 uid="uid://dofdw111btiwn"]
 
 [ext_resource type="PackedScene" uid="uid://chtxphosmime" path="res://scenes/hud.tscn" id="1_5ajq0"]
 [ext_resource type="PackedScene" uid="uid://d27fu1cnkta4i" path="res://scenes/game_over_screen.tscn" id="2_tkgvw"]
 [ext_resource type="PackedScene" uid="uid://bbvkdndmhpefm" path="res://scenes/menu_screen.tscn" id="3_xblgs"]
-[ext_resource type="Script" path="res://scripts/menu_screen.gd" id="4_r4x83"]
 
 [node name="UILayer" type="CanvasLayer"]
 
@@ -14,4 +13,3 @@ visible = false
 
 [node name="MenuScreen" parent="." instance=ExtResource("3_xblgs")]
 visible = false
-script = ExtResource("4_r4x83")

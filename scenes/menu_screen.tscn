@@ -1,7 +1,11 @@
-[gd_scene load_steps=5 format=3 uid="uid://bbvkdndmhpefm"]
+[gd_scene load_steps=9 format=3 uid="uid://bbvkdndmhpefm"]
 
 [ext_resource type="FontFile" uid="uid://8y0f1qfb7kyo" path="res://assets/fonts/Kenney Pixel Square.ttf" id="1_u02l0"]
 [ext_resource type="Script" path="res://scripts/menu_screen.gd" id="1_unq0s"]
+[ext_resource type="Texture2D" uid="uid://dbvik8j4aqiq5" path="res://assets/UI Base Pack/PNG/Green/Double/button_rectangle_depth_gloss.png" id="3_ikrn1"]
+[ext_resource type="FontFile" uid="uid://c8utve888hy41" path="res://assets/UI Base Pack/Font/Kenney Future.ttf" id="4_0gjnw"]
+[ext_resource type="Texture2D" uid="uid://bvqvjtrkk3hn5" path="res://assets/UI Base Pack/PNG/Yellow/Double/button_rectangle_depth_gloss.png" id="5_4ekc8"]
+[ext_resource type="Texture2D" uid="uid://b8l1bwfjrb6c3" path="res://assets/UI Base Pack/PNG/Red/Double/button_rectangle_gloss.png" id="6_2qw63"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_q05sq"]
 font = ExtResource("1_u02l0")
@@ -27,59 +31,7 @@ offset_right = 1920.0
 offset_bottom = 1080.0
 color = Color(0, 0, 0, 0.501961)
 
-[node name="RestartButton" type="Button" parent="."]
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = 994.0
-offset_top = 935.0
-offset_right = 1414.0
-offset_bottom = 1015.0
-grow_horizontal = 2
-grow_vertical = 2
-theme_override_fonts/font = ExtResource("1_u02l0")
-theme_override_font_sizes/font_size = 48
-text = "RESTART"
-
-[node name="ResumeButton" type="Button" parent="."]
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = 66.0
-offset_top = 935.0
-offset_right = 553.0
-offset_bottom = 1015.0
-grow_horizontal = 2
-grow_vertical = 2
-theme_override_fonts/font = ExtResource("1_u02l0")
-theme_override_font_sizes/font_size = 48
-text = "RESUME GAME"
-
-[node name="QuitButton" type="Button" parent="."]
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = 1439.0
-offset_top = 935.0
-offset_right = 1859.0
-offset_bottom = 1015.0
-grow_horizontal = 2
-grow_vertical = 2
-theme_override_fonts/font = ExtResource("1_u02l0")
-theme_override_font_sizes/font_size = 48
-text = "EXIT"
-
 [node name="Node2D" type="Node2D" parent="."]
-position = Vector2(2, 167)
 
 [node name="ControlsLabel11" type="Label" parent="Node2D"]
 anchors_preset = 8
@@ -87,13 +39,68 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = 64.0
-offset_top = 271.0
-offset_right = 414.0
-offset_bottom = 319.0
+offset_left = 81.0
+offset_top = 388.0
+offset_right = 431.0
+offset_bottom = 436.0
 grow_horizontal = 2
 grow_vertical = 2
+theme_override_fonts/font = ExtResource("4_0gjnw")
 text = "Move Forward:
+"
+label_settings = SubResource("LabelSettings_q05sq")
+vertical_alignment = 1
+
+[node name="ControlsLabel14" type="Label" parent="Node2D"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 1099.0
+offset_top = 388.0
+offset_right = 1272.0
+offset_bottom = 436.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_fonts/font = ExtResource("4_0gjnw")
+text = "MUSIC:
+"
+label_settings = SubResource("LabelSettings_q05sq")
+vertical_alignment = 1
+
+[node name="ControlsLabel15" type="Label" parent="Node2D"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 1099.0
+offset_top = 513.0
+offset_right = 1272.0
+offset_bottom = 561.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_fonts/font = ExtResource("4_0gjnw")
+text = "SFX:
+"
+label_settings = SubResource("LabelSettings_q05sq")
+vertical_alignment = 1
+
+[node name="ControlsLabel16" type="Label" parent="Node2D"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 1099.0
+offset_top = 619.0
+offset_right = 1272.0
+offset_bottom = 667.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_fonts/font = ExtResource("4_0gjnw")
+text = "MUTE:
 "
 label_settings = SubResource("LabelSettings_q05sq")
 vertical_alignment = 1
@@ -104,13 +111,37 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = 64.0
-offset_top = 131.0
-offset_right = 440.0
-offset_bottom = 227.0
+offset_left = 81.0
+offset_top = 178.0
+offset_right = 457.0
+offset_bottom = 274.0
 grow_horizontal = 2
 grow_vertical = 2
+theme_override_colors/font_color = Color(1, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("4_0gjnw")
+theme_override_font_sizes/font_size = 32
 text = "CONTROLS"
+label_settings = SubResource("LabelSettings_11snk")
+vertical_alignment = 1
+
+[node name="ControlsLabel12" type="Label" parent="Node2D"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 1099.0
+offset_top = 178.0
+offset_right = 1475.0
+offset_bottom = 274.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(1, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("4_0gjnw")
+theme_override_font_sizes/font_size = 32
+text = "SOUND"
 label_settings = SubResource("LabelSettings_11snk")
 vertical_alignment = 1
 
@@ -120,12 +151,13 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = 64.0
-offset_top = 329.0
-offset_right = 414.0
-offset_bottom = 377.0
+offset_left = 81.0
+offset_top = 446.0
+offset_right = 431.0
+offset_bottom = 494.0
 grow_horizontal = 2
 grow_vertical = 2
+theme_override_fonts/font = ExtResource("4_0gjnw")
 text = "Move Backward:
 "
 label_settings = SubResource("LabelSettings_q05sq")
@@ -137,12 +169,13 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = 64.0
-offset_top = 388.0
-offset_right = 414.0
-offset_bottom = 436.0
+offset_left = 81.0
+offset_top = 505.0
+offset_right = 431.0
+offset_bottom = 553.0
 grow_horizontal = 2
 grow_vertical = 2
+theme_override_fonts/font = ExtResource("4_0gjnw")
 text = "ROTATE LEFT:
 "
 label_settings = SubResource("LabelSettings_q05sq")
@@ -154,12 +187,13 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = 64.0
-offset_top = 444.0
-offset_right = 414.0
-offset_bottom = 492.0
+offset_left = 81.0
+offset_top = 561.0
+offset_right = 431.0
+offset_bottom = 609.0
 grow_horizontal = 2
 grow_vertical = 2
+theme_override_fonts/font = ExtResource("4_0gjnw")
 text = "ROTATE RIGHT:
 "
 label_settings = SubResource("LabelSettings_q05sq")
@@ -171,12 +205,13 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = 444.0
-offset_top = 271.0
-offset_right = 544.0
-offset_bottom = 319.0
+offset_left = 461.0
+offset_top = 388.0
+offset_right = 561.0
+offset_bottom = 436.0
 grow_horizontal = 2
 grow_vertical = 2
+theme_override_fonts/font = ExtResource("4_0gjnw")
 text = "W
 "
 label_settings = SubResource("LabelSettings_q05sq")
@@ -188,12 +223,13 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = 444.0
-offset_top = 329.0
-offset_right = 544.0
-offset_bottom = 377.0
+offset_left = 461.0
+offset_top = 446.0
+offset_right = 561.0
+offset_bottom = 494.0
 grow_horizontal = 2
 grow_vertical = 2
+theme_override_fonts/font = ExtResource("4_0gjnw")
 text = "S
 "
 label_settings = SubResource("LabelSettings_q05sq")
@@ -205,12 +241,13 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = 444.0
-offset_top = 388.0
-offset_right = 544.0
-offset_bottom = 436.0
+offset_left = 461.0
+offset_top = 505.0
+offset_right = 561.0
+offset_bottom = 553.0
 grow_horizontal = 2
 grow_vertical = 2
+theme_override_fonts/font = ExtResource("4_0gjnw")
 text = "A
 "
 label_settings = SubResource("LabelSettings_q05sq")
@@ -222,12 +259,13 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = 444.0
-offset_top = 444.0
-offset_right = 544.0
-offset_bottom = 492.0
+offset_left = 461.0
+offset_top = 561.0
+offset_right = 561.0
+offset_bottom = 609.0
 grow_horizontal = 2
 grow_vertical = 2
+theme_override_fonts/font = ExtResource("4_0gjnw")
 text = "D
 "
 label_settings = SubResource("LabelSettings_q05sq")
@@ -239,12 +277,13 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = 64.0
-offset_top = 502.0
-offset_right = 414.0
-offset_bottom = 550.0
+offset_left = 81.0
+offset_top = 619.0
+offset_right = 431.0
+offset_bottom = 667.0
 grow_horizontal = 2
 grow_vertical = 2
+theme_override_fonts/font = ExtResource("4_0gjnw")
 text = "ATTACK
 "
 label_settings = SubResource("LabelSettings_q05sq")
@@ -256,17 +295,105 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = 444.0
-offset_top = 502.0
-offset_right = 672.0
-offset_bottom = 550.0
+offset_left = 461.0
+offset_top = 619.0
+offset_right = 689.0
+offset_bottom = 667.0
 grow_horizontal = 2
 grow_vertical = 2
+theme_override_fonts/font = ExtResource("4_0gjnw")
 text = "LEFT MOUSE
 "
 label_settings = SubResource("LabelSettings_q05sq")
 vertical_alignment = 1
 
-[connection signal="pressed" from="RestartButton" to="." method="_on_restart_button_pressed"]
+[node name="MusicVolumeSlider" type="HSlider" parent="."]
+offset_left = 1308.0
+offset_top = 396.0
+offset_right = 1795.0
+offset_bottom = 434.0
+min_value = -40.0
+max_value = 0.0
+step = 0.01
+value = -4.0
+
+[node name="SFXVolumeSlider" type="HSlider" parent="."]
+offset_left = 1308.0
+offset_top = 521.0
+offset_right = 1795.0
+offset_bottom = 559.0
+min_value = -40.0
+max_value = 0.0
+value = -4.0
+
+[node name="MuteButton" type="CheckButton" parent="."]
+offset_left = 1308.0
+offset_top = 631.0
+offset_right = 1352.0
+offset_bottom = 655.0
+scale = Vector2(1.5, 1.5)
+
+[node name="ResumeButton" type="TextureButton" parent="."]
+layout_mode = 0
+offset_left = 1416.0
+offset_top = 873.0
+offset_right = 1800.0
+offset_bottom = 1001.0
+texture_normal = ExtResource("3_ikrn1")
+stretch_mode = 0
+
+[node name="Label" type="Label" parent="ResumeButton"]
+layout_mode = 0
+offset_right = 380.0
+offset_bottom = 121.0
+theme_override_fonts/font = ExtResource("4_0gjnw")
+theme_override_font_sizes/font_size = 48
+text = "RESUME"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="RestartButton" type="TextureButton" parent="."]
+layout_mode = 0
+offset_left = 502.0
+offset_top = 873.0
+offset_right = 886.0
+offset_bottom = 1001.0
+texture_normal = ExtResource("5_4ekc8")
+stretch_mode = 0
+
+[node name="Label" type="Label" parent="RestartButton"]
+layout_mode = 0
+offset_right = 380.0
+offset_bottom = 121.0
+theme_override_fonts/font = ExtResource("4_0gjnw")
+theme_override_font_sizes/font_size = 48
+text = "RESTART"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="ExitButton" type="TextureButton" parent="."]
+layout_mode = 0
+offset_left = 81.0
+offset_top = 873.0
+offset_right = 465.0
+offset_bottom = 1001.0
+texture_normal = ExtResource("6_2qw63")
+stretch_mode = 0
+
+[node name="Label" type="Label" parent="ExitButton"]
+layout_mode = 0
+offset_left = 5.0
+offset_right = 385.0
+offset_bottom = 121.0
+theme_override_fonts/font = ExtResource("4_0gjnw")
+theme_override_font_sizes/font_size = 48
+text = "EXIT"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[connection signal="value_changed" from="MusicVolumeSlider" to="." method="_on_music_volume_slider_value_changed"]
+[connection signal="value_changed" from="SFXVolumeSlider" to="." method="_on_sfx_volume_slider_value_changed"]
+[connection signal="toggled" from="MuteButton" to="." method="_on_mute_button_toggled"]
 [connection signal="pressed" from="ResumeButton" to="." method="_on_resume_button_pressed"]
-[connection signal="pressed" from="QuitButton" to="." method="_on_quit_button_pressed"]
+[connection signal="pressed" from="RestartButton" to="." method="_on_restart_button_pressed"]
+[connection signal="pressed" from="ExitButton" to="." method="_on_quit_button_pressed"]

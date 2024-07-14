@@ -1,8 +1,6 @@
 extends Control
 class_name GameOveScreen
 
-@onready var restart_button = $RestartButton
-
 func set_wave_label(_wave: int):
 	$WaveLabel.text = "WAVE: " + str(_wave)
 
