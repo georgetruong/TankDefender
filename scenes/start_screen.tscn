@@ -64,12 +64,12 @@ text = "START GAME"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="ResumeButton3" type="TextureButton" parent="VBoxContainer"]
+[node name="CreditsButton" type="TextureButton" parent="VBoxContainer"]
 layout_mode = 2
 texture_normal = ExtResource("4_h8cpi")
 stretch_mode = 0
 
-[node name="Label" type="Label" parent="VBoxContainer/ResumeButton3"]
+[node name="Label" type="Label" parent="VBoxContainer/CreditsButton"]
 layout_mode = 0
 offset_right = 497.0
 offset_bottom = 121.0
@@ -81,12 +81,12 @@ text = "CREDITS"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="ResumeButton4" type="TextureButton" parent="VBoxContainer"]
+[node name="QuitButton" type="TextureButton" parent="VBoxContainer"]
 layout_mode = 2
 texture_normal = ExtResource("5_eof2q")
 stretch_mode = 0
 
-[node name="Label" type="Label" parent="VBoxContainer/ResumeButton4"]
+[node name="Label" type="Label" parent="VBoxContainer/QuitButton"]
 layout_mode = 0
 offset_right = 502.0
 offset_bottom = 121.0
@@ -99,4 +99,5 @@ horizontal_alignment = 1
 vertical_alignment = 1
 
 [connection signal="pressed" from="VBoxContainer/ResumeButton" to="." method="_on_start_button_pressed"]
-[connection signal="pressed" from="VBoxContainer/ResumeButton4" to="." method="_on_quit_button_pressed"]
+[connection signal="pressed" from="VBoxContainer/CreditsButton" to="." method="_on_credits_button_pressed"]
+[connection signal="pressed" from="VBoxContainer/QuitButton" to="." method="_on_quit_button_pressed"]
